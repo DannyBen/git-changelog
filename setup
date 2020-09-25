@@ -1,33 +1,27 @@
 #!/usr/bin/env bash
-echo "This operation will download the git-changelog bash script to /usr/local/bin/git-changelog."
-printf "Continue? [yN] "
-read answer
 
-if [[ $answer =~ [Yy] ]]; then
-  echo ""
-  echo "Downloading from github.com/DannyBen/git-changelog..."
-
-  CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/git-changelog > /usr/local/bin/git-changelog"
-
-  if [[ $EUID -ne 0 ]]; then
-    # not root, need sudo
-    sudo bash -c "$CURL_COMMAND"
-    sudo chmod a+x /usr/local/bin/git-changelog
-  else
-    # root
-    bash -c "$CURL_COMMAND"
-    chmod a+x /usr/local/bin/git-changelog
-  fi
-
-  if type git-changelog > /dev/null; then
-    echo ""
-    echo "Done. Type 'git-changelog --help' for more info, or 'git changelog' to generate a change log."
-
-  else
-    echo ""
-    echo "Failed downloading."
-    exit 1
-  fi
+echo "=== Saving executable at /usr/local/bin/git-changelog"
+CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/git-changelog > /usr/local/bin/git-changelog"
+if [[ $EUID -ne 0 ]]; then
+  sudo bash -c "$CURL_COMMAND"
+  sudo chmod a+x /usr/local/bin/git-changelog
 else
-  echo "Aborting"
+  bash -c "$CURL_COMMAND"
+  chmod a+x /usr/local/bin/git-changelog
+fi
+
+echo "=== Saving manpage at /usr/local/share/man/man1/git-changelog.1"
+CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/doc/git-changelog.1 > /usr/local/share/man/man1/git-changelog.1"
+if [[ $EUID -ne 0 ]]; then
+  sudo bash -c "$CURL_COMMAND"
+else
+  bash -c "$CURL_COMMAND"
+fi
+
+if type git-changelog > /dev/null; then
+  echo "=== Done. Type 'git changelog --help' for more info."
+
+else
+  echo "=== Setup failed."
+  exit 1
 fi
