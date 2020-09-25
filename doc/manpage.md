@@ -36,13 +36,13 @@ OPTIONS
 `-v, --version`
 ~    Show version number.
 
-`--tail, -t N`
+`-t, --tail N`
 ~    Show only the last N tags.
 
-`--out, -o PATH`
+`-o, --outPATH`
 ~    Save output to a file.
 
-`--color, -c OPTION`
+`-c, --color OPTION`
 ~    Enable or disable color.
      Supported options: *yes*, *on*, *always*, *no*, *off*, *never*, *auto*.
 
