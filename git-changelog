@@ -60,6 +60,7 @@ git_changelog_usage() {
     # :flag.usage
     echo "  --color, -c OPTION"
     printf "    Enable or disable color. Supported options:\n    - yes, on, always\n    - no, off, never\n    - auto\n"
+    printf "    Default: auto\n"
     echo
 
     # :command.usage_examples
@@ -282,11 +283,12 @@ parse_requirements() {
     esac
   done
   # :command.default_assignments
+  [[ -n ${args[--color]} ]] || args[--color]="auto"
 }
 
 # :command.initialize
 initialize() {
-  version="0.1.1"
+  version="0.1.2"
   long_usage=''
   set -e  
 

@@ -16,6 +16,7 @@ flags:
 - long: --color
   short: -c
   arg: option
+  default: auto
   help: "Enable or disable color. Supported options:\n- yes, on, always\n- no, off, never\n- auto"
 
 examples:

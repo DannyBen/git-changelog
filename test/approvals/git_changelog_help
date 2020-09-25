@@ -23,6 +23,7 @@ Options:
     - yes, on, always
     - no, off, never
     - auto
+    Default: auto
 
 Examples:
   git changelog --tail 3
