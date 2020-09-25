@@ -30,20 +30,20 @@ by a space).
 OPTIONS
 ==================================================
 
-`-h, --help`
-~    Show available options.
+-h, --help
+:    Show available options.
 
-`-v, --version`
-~    Show version number.
+-v, --version
+:    Show version number.
 
-`-t, --tail N`
-~    Show only the last N tags.
+-t, --tail N
+:    Show only the last N tags.
 
-`-o, --outPATH`
-~    Save output to a file.
+-o, --outPATH
+:    Save output to a file.
 
-`-c, --color OPTION`
-~    Enable or disable color.
+-c, --color OPTION
+:    Enable or disable color.
      Supported options: *yes*, *on*, *always*, *no*, *off*, *never*, *auto*.
 
 
