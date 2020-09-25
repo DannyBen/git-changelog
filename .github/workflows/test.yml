@@ -12,6 +12,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Initialize git user
+      run: |
+        git config --global user.email "tester@approvals.com"
+        git config --global user.name "Approvals Tester"
+
     # - name: Run shellcheck tests
     #   run: shellcheck -x git-changelog
 
