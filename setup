@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+echo "This operation will download the git-changelog bash script to /usr/local/bin/git-changelog."
+printf "Continue? [yN] "
+read answer
+
+if [[ $answer =~ [Yy] ]]; then
+  echo ""
+  echo "Downloading from github.com/DannyBen/git-changelog..."
+
+  CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/op > /usr/local/bin/git-changelog"
+
+  if [[ $EUID -ne 0 ]]; then
+    # not root, need sudo
+    sudo bash -c "$CURL_COMMAND"
+    sudo chmod a+x /usr/local/bin/git-changelog
+  else
+    # root
+    bash -c "$CURL_COMMAND"
+    chmod a+x /usr/local/bin/git-changelog
+  fi
+
+  if type git-changelog > /dev/null; then
+    echo ""
+    echo "Done. Type 'git-changelog --help' for more info, or 'git changelog' to generate a change log."
+
+  else
+    echo ""
+    echo "Failed downloading."
+    exit 1
+  fi
+else
+  echo "Aborting"
+fi
