@@ -1,7 +1,7 @@
 
 # git-changelog
 
-![Version](https://img.shields.io/badge/version-0.1.1-blue.svg)
+![Version](https://img.shields.io/badge/version-0.1.2-blue.svg)
 [![Build Status](https://github.com/DannyBen/git-changelog/workflows/Test/badge.svg)](https://github.com/DannyBen/git-changelog/actions?query=workflow%3ATest)
 
 Create a markdown change log from your git repository (without GitHub).
@@ -10,31 +10,40 @@ Create a markdown change log from your git repository (without GitHub).
 
 ## Install
 
+### Installing with the setup script
+
 The simplest way to install, is to run the installation script:
 
 ```shell
 $ bash <(curl -Ls get.dannyb.co/git-changelog/setup)
 ```
 
-If you prefer to install manually, simply download the
-[git-changelog](/git-changelog) file, place it somewhere in your path
-(for example `/usr/local/bin`), and make it executable.
+It will:
+
+- Download the executable to `/usr/local/bin/git-changelog`
+- Download the manpage to `/usr/local/share/man/man1/git-changelog.1`
+
+### Installing manually
+
+If you prefer to install manually:
+
+1. Download the [git-changelog](/git-changelog) file, place it somewhere in
+   your path (for example `/usr/local/bin`), and make it executable.
+2. Optionally, download the [manpage](/doc/git-changelog.1) and place it in
+   `/usr/local/share/man/man1`.
 
 
 ## Usage
 
-Use either `git-changelog` or `git changelog` to generate a change log in any
-compatible git repository. Note that in order to see the help screen, you
-must use `git-changelog --help` (and not `git changelog --help`).
+Run `git changelog` in any compatible git repository. It will print a
+markdown change log using these rules:
 
-The `git changelog` command will print a markdown change log using these
-rules:
-
-1. Group git log events by tags
+1. Group `git log` events by tag
 2. Only include tags that either:
    - Start with the letter `v` followed by a digit (`v1.2.3`)
    - Start with a digit (`1.2.3`)
-3. Only include log events that start with a hyphen followed by a space (`"- Fixed something"`)
+3. Only include log events that start with a hyphen followed by a space
+   (`"- Fixed something"`)
 
 
 ## Contributing / Support
