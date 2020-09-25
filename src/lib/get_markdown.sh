@@ -1,5 +1,6 @@
 get_markdown() {
-  limit="$1"
+  limit=$1
+  color=$2
   skip_first="$limit"
 
   printf "Change Log\n"
@@ -27,7 +28,7 @@ get_markdown() {
     commits=$(get_log "$from" "$to")
 
     if [[ -n "$commits" ]]; then
-      if is_terminal; then
+      if use_color "$color" ; then
         printf "%s - %s\n" "$(green "$tag")" "$(cyan "$date")"
       else
         printf "%s - %s\n" "$tag" "$date"

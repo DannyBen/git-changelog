@@ -4,14 +4,25 @@ PATH="$PWD:$PATH"
 pushd test/sample-repo > /dev/null
 source "../approvals.bash"
 
-describe "git-changelog --help"
+
+describe "--help"
   approve "git-changelog --help"
 
-describe "git changelog"
+describe "changelog"
   approve "git-changelog"
 
-describe "git changelog --tail"
+describe "--tail N"
   approve "git-changelog --tail 2"
 
-popd > /dev/null
+describe "--color OPTION"
+  approve "git-changelog --color off"
 
+describe "--out PATH"
+  rm -f out.md
+  git-changelog --out out.md
+  approve "cat out.md"
+  rm -f out.md
+
+
+blue PASS ALL
+popd > /dev/null

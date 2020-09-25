@@ -6,12 +6,13 @@
 root_command() {
   # :src/root_command.sh
   limit="${args[--tail]}"
+  color="${args[--color]:=auto}"
   out="${args[--out]}"
   
-  if [[ -z "$out" ]]; then
-    get_markdown "$limit"
+  if [[ -n "$out" ]]; then
+    get_markdown "$limit" "off" > "$out"
   else
-    get_markdown "$limit" > "$out"
+    get_markdown "$limit" "$color"
   fi
 }
 
@@ -54,6 +55,11 @@ git_changelog_usage() {
     # :flag.usage
     echo "  --out, -o PATH"
     printf "    Save output to a file\n"
+    echo
+    
+    # :flag.usage
+    echo "  --color, -c OPTION"
+    printf "    Enable or disable color. Supported options:\n    - yes, on, always\n    - no, off, never\n    - auto\n"
     echo
 
     # :command.usage_examples
@@ -125,7 +131,8 @@ get_log() {
 
 # :src/lib/get_markdown.sh
 get_markdown() {
-  limit="$1"
+  limit=$1
+  color=$2
   skip_first="$limit"
 
   printf "Change Log\n"
@@ -153,7 +160,7 @@ get_markdown() {
     commits=$(get_log "$from" "$to")
 
     if [[ -n "$commits" ]]; then
-      if is_terminal; then
+      if use_color "$color" ; then
         printf "%s - %s\n" "$(green "$tag")" "$(cyan "$date")"
       else
         printf "%s - %s\n" "$tag" "$date"
@@ -178,9 +185,22 @@ get_tags() {
   fi
 }
 
-# :src/lib/is_terminal.sh
-is_terminal() {
+# :src/lib/is_tty.sh
+is_tty() {
   [[ -t 1 || -p /dev/stdout ]]
+}
+
+# :src/lib/use_color.sh
+use_color() {
+  option=${1:-auto}
+
+  if [[ "$option" == "yes" || "$option" == "on" || "$option" == "always" ]]; then
+    return 0
+  elif [[ "$option" == "no" || "$option" == "off" || "$option" == "never" ]]; then
+    return 1
+  else
+    is_tty
+  fi
 }
 
 # :command.command_functions
@@ -231,6 +251,18 @@ parse_requirements() {
         shift
       else
         printf "%s\n" "--out requires an argument: --out, -o PATH"
+        exit 1
+      fi
+      ;;
+  
+    # :flag.case
+    --color | -c )
+      if [[ $2 && $2 != -* ]]; then
+        args[--color]="$2"
+        shift
+        shift
+      else
+        printf "%s\n" "--color requires an argument: --color, -c OPTION"
         exit 1
       fi
       ;;

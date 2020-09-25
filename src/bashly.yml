@@ -13,6 +13,11 @@ flags:
   arg: path
   help: Save output to a file
 
+- long: --color
+  short: -c
+  arg: option
+  help: "Enable or disable color. Supported options:\n- yes, on, always\n- no, off, never\n- auto"
+
 examples:
 - git changelog --tail 3
 - git changelog --out CHANGELOG.md

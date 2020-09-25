@@ -18,6 +18,12 @@ Options:
   --out, -o PATH
     Save output to a file
 
+  --color, -c OPTION
+    Enable or disable color. Supported options:
+    - yes, on, always
+    - no, off, never
+    - auto
+
 Examples:
   git changelog --tail 3
   git changelog --out CHANGELOG.md
