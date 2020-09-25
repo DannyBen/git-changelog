@@ -7,7 +7,7 @@ if [[ $answer =~ [Yy] ]]; then
   echo ""
   echo "Downloading from github.com/DannyBen/git-changelog..."
 
-  CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/op > /usr/local/bin/git-changelog"
+  CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/git-changelog > /usr/local/bin/git-changelog"
 
   if [[ $EUID -ne 0 ]]; then
     # not root, need sudo
