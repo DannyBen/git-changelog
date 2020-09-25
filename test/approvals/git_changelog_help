@@ -1,0 +1,23 @@
+git-changelog - Generate a human-readable change log from a git repo
+
+Usage:
+  git-changelog [options]
+  git-changelog --help | -h
+  git-changelog --version | -v
+
+Options:
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
+
+  --tail, -t N
+    Show only the last N tags
+
+  --out, -o PATH
+    Save output to a file
+
+Examples:
+  git changelog --tail 3
+  git changelog --out CHANGELOG.md
