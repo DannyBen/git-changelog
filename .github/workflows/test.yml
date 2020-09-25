@@ -17,8 +17,8 @@ jobs:
         git config --global user.email "tester@approvals.com"
         git config --global user.name "Approvals Tester"
 
-    # - name: Run shellcheck tests
-    #   run: shellcheck -x git-changelog
+    - name: Run shellcheck tests
+      run: shellcheck -x git-changelog
 
     - name: Initialize test repo
       run: test/init-repo

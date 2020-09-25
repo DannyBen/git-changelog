@@ -26,11 +26,11 @@ get_markdown() {
 
     commits=$(get_log "$from" "$to")
 
-    if [[ ! -z "$commits" ]]; then
+    if [[ -n "$commits" ]]; then
       if is_terminal; then
-        printf "%s - %s\n" $(green $tag) $(cyan $date)
+        printf "%s - %s\n" "$(green "$tag")" "$(cyan "$date")"
       else
-        printf "%s - %s\n" $tag $date
+        printf "%s - %s\n" "$tag" "$date"
       fi
 
       printf -- "----------------------------------------\n\n"
