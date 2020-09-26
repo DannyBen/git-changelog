@@ -1,26 +1,35 @@
 Change Log
 ========================================
 
-v0.1.0 - 2020-09-25
+v0.1.0 - 2020-09-26
 ----------------------------------------
 
 - Initial version
 
 
-v0.2.0 - 2020-09-25
+v0.2.0 - 2020-09-26
 ----------------------------------------
 
 - Second change log item
+- The last commit in this tag
 
 
-v0.3.0 - 2020-09-25
+v0.3.0 - 2020-09-26
 ----------------------------------------
 
-- This is a big version with multiple commits
 - This is the third version
+- This is a big version with multiple commits
 
 
-1.0.0 - 2020-09-25
+1.0.0 - 2020-09-26
 ----------------------------------------
 
 - Version without the v prefix
+
+
+Untagged - Latest
+----------------------------------------
+
+- Unreleased change
+- Another unreleased change
+- Last unreleased change

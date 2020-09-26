@@ -116,13 +116,13 @@ cyan_underlined() { printf "\e[4;36m%b\e[0m\n" "$*"; }
 
 # :src/lib/get_log.sh
 get_log() {
-  from="$1"
-  to="$2"
+  from=$1
+  to=${2:-HEAD}
 
-  if [[ -z "$from" ]]; then
-    ref="$to"
-  else
+  if [[ -n "$from" ]]; then
     ref="$from..$to"
+  else
+    ref="$to"
   fi
 
   set +e
@@ -171,6 +171,19 @@ get_markdown() {
       printf "%s\n\n\n" "$commits"
     fi
   done
+
+  commits=$(get_log "$last_tag" "HEAD")
+
+  if [[ -n "$commits" ]]; then
+    if use_color "$color" ; then
+      printf "%s - %s\n" "$(green Untagged)" "$(cyan Latest)"
+    else
+      printf "Untagged - Latest\n"
+    fi
+
+    printf -- "----------------------------------------\n\n"
+    printf "%s\n\n\n" "$commits"
+  fi
 }
 
 # :src/lib/get_tags.sh

@@ -1,11 +1,11 @@
 get_log() {
-  from="$1"
-  to="$2"
+  from=$1
+  to=${2:-HEAD}
 
-  if [[ -z "$from" ]]; then
-    ref="$to"
-  else
+  if [[ -n "$from" ]]; then
     ref="$from..$to"
+  else
+    ref="$to"
   fi
 
   set +e

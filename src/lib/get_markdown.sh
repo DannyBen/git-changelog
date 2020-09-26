@@ -38,4 +38,17 @@ get_markdown() {
       printf "%s\n\n\n" "$commits"
     fi
   done
+
+  commits=$(get_log "$last_tag" "HEAD")
+
+  if [[ -n "$commits" ]]; then
+    if use_color "$color" ; then
+      printf "%s - %s\n" "$(green Untagged)" "$(cyan Latest)"
+    else
+      printf "Untagged - Latest\n"
+    fi
+
+    printf -- "----------------------------------------\n\n"
+    printf "%s\n\n\n" "$commits"
+  fi
 }
