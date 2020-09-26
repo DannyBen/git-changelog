@@ -6,7 +6,7 @@ commit() {
   message="$1"
   echo $RANDOM > file
   git add . && git commit -am "$message"
-  sleep 0.5
+  sleep 1
 }
 
 tag() {
