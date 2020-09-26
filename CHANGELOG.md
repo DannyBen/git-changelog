@@ -19,3 +19,11 @@ v0.1.2 - 2020-09-25
 - Add manpage
 
 
+v0.1.3 - 2020-09-26
+----------------------------------------
+
+- Fix manpage options
+- Show latest (untagged) changes
+- Fix reversed log order
+
+
