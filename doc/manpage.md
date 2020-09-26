@@ -1,4 +1,4 @@
-% git-changelog(1) Version 0.1.2 | Change Log Generator
+% git-changelog(1) Version 0.1.3 | Change Log Generator
 % Danny Ben Shitrit <https://github.com/dannyben>
 % September 2020
 
