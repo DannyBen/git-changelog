@@ -126,7 +126,7 @@ get_log() {
   fi
 
   set +e
-  git log "$ref" --reverse --pretty=format:'%s' | grep --color=never -P "^- "
+  git log "$ref" --reverse --format='%s' | grep --color=never -P "^- "
   set -e
 }
 
@@ -189,7 +189,7 @@ get_markdown() {
 # :src/lib/get_tags.sh
 get_tags() {
   limit="$1"
-  result=$(git tag --sort=v:creatordate --format='%(refname:short):%(creatordate:short)' | grep --color=never -P "^(v[[:digit:]]|[[:digit:]])")
+  result=$(git tag --sort=committerdate --format='%(refname:short):%(committerdate:short)' | grep --color=never -P "^(v[[:digit:]]|[[:digit:]])")
   
   if [[ -z "$limit" ]]; then
     echo "$result"
@@ -301,7 +301,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.3"
+  version="0.1.4"
   long_usage=''
   set -e  
 

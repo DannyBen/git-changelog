@@ -9,6 +9,6 @@ get_log() {
   fi
 
   set +e
-  git log "$ref" --reverse --pretty=format:'%s' | grep --color=never -P "^- "
+  git log "$ref" --reverse --format='%s' | grep --color=never -P "^- "
   set -e
 }
