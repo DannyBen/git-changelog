@@ -15,6 +15,9 @@ Options:
   --tail, -t N
     Show only the last N tags
 
+  --reverse, -r
+    Show tags in reverse order (newest first)
+
   --out, -o PATH
     Save output to a file
 

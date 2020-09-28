@@ -1,7 +1,9 @@
 use_color() {
-  if [[ "$COLOR" == "yes" || "$COLOR" == "on" || "$COLOR" == "always" ]]; then
+  option=${1:-auto}
+
+  if [[ "$option" == "yes" || "$option" == "on" || "$option" == "always" ]]; then
     return 0
-  elif [[ "$COLOR" == "no" || "$COLOR" == "off" || "$COLOR" == "never" ]]; then
+  elif [[ "$option" == "no" || "$option" == "off" || "$option" == "never" ]]; then
     return 1
   else
     is_tty
