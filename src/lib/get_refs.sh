@@ -11,8 +11,8 @@ get_refs() {
       ref="$last_tag..$tag"
     fi
     last_tag="$tag"
-    printf "$tag_data:$ref\n"
+    printf "%s:%s\n" "$tag_data" "$ref"
   done
 
-  printf "Untagged:Latest:$last_tag..HEAD"
+  printf "Untagged:Latest:%s..HEAD" "$last_tag"
 }
