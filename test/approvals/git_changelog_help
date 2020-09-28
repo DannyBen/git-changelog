@@ -31,3 +31,4 @@ Options:
 Examples:
   git changelog --tail 3
   git changelog --out CHANGELOG.md
+  git changelog -r -o CHANGELOG.md

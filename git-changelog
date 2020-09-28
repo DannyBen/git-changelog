@@ -74,6 +74,7 @@ git_changelog_usage() {
     
     printf "  git changelog --tail 3\n"
     printf "  git changelog --out CHANGELOG.md\n"
+    printf "  git changelog -r -o CHANGELOG.md\n"
     echo
 
   fi
@@ -178,10 +179,10 @@ get_refs() {
       ref="$last_tag..$tag"
     fi
     last_tag="$tag"
-    printf "%s:%s\n" "$tag_data" "$ref"
+    printf "$tag_data:$ref\n"
   done
 
-  printf "Untagged:Latest:%s..HEAD" "$last_tag"
+  printf "Untagged:Latest:$last_tag..HEAD"
 }
 
 # :src/lib/get_tags.sh
