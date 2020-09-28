@@ -6,13 +6,14 @@
 root_command() {
   # :src/root_command.sh
   limit="${args[--tail]}"
-  color="${args[--color]:=auto}"
+  color="${args[--color]}"
+  reverse="${args[--reverse]}"
   out="${args[--out]}"
   
   if [[ -n "$out" ]]; then
-    get_markdown "$limit" "off" > "$out"
+    get_markdown "$limit" "off" "$reverse" > "$out"
   else
-    get_markdown "$limit" "$color"
+    get_markdown "$limit" "$color" "$reverse"
   fi
 }
 
@@ -50,6 +51,11 @@ git_changelog_usage() {
     # :flag.usage
     echo "  --tail, -t N"
     printf "    Show only the last N tags\n"
+    echo
+    
+    # :flag.usage
+    echo "  --reverse, -r"
+    printf "    Show tags in reverse order (newest first)\n"
     echo
     
     # :flag.usage
@@ -116,14 +122,7 @@ cyan_underlined() { printf "\e[4;36m%b\e[0m\n" "$*"; }
 
 # :src/lib/get_log.sh
 get_log() {
-  from=$1
-  to=${2:-HEAD}
-
-  if [[ -n "$from" ]]; then
-    ref="$from..$to"
-  else
-    ref="$to"
-  fi
+  ref="$1"
 
   set +e
   git log "$ref" --reverse --format='%s' | grep --color=never -P "^- "
@@ -134,31 +133,23 @@ get_log() {
 get_markdown() {
   limit=$1
   color=$2
-  skip_first="$limit"
+  reverse=$3
 
   printf "Change Log\n"
   printf "========================================\n\n"
 
-  for tag_data in $(get_tags "$limit"); do
-    tag=${tag_data%:*}
-    date=${tag_data#*:}
+  refs=$(get_refs "$limit")
 
-    if [[ -z "$last_tag" ]]; then
-      from=''
-      to=$tag
-      last_tag=$tag
-    else
-      from=$last_tag
-      to=$tag
-      last_tag=$tag
-    fi
+  [[ -n "$reverse" ]] && refs=$(reverse "${refs[@]}")
+  [[ -n "$limit" ]] && refs=$(echo "$refs" | tail -n "$limit")
 
-    if [[ $skip_first ]]; then
-      skip_first=''
-      continue
-    fi
+  for tag_data in $refs; do
+    IFS=: read -a data <<< "$tag_data" 
+    tag=${data[0]}
+    date=${data[1]}
+    ref=${data[2]}
 
-    commits=$(get_log "$from" "$to")
+    commits=$(get_log "$ref")
 
     if [[ -n "$commits" ]]; then
       if use_color "$color" ; then
@@ -171,32 +162,31 @@ get_markdown() {
       printf "%s\n\n\n" "$commits"
     fi
   done
+}
 
-  commits=$(get_log "$last_tag" "HEAD")
+# :src/lib/get_refs.sh
+# Returns an array, where each line is "tag:date:ref"
+# It is the same as get tags, only with added ref
+get_refs() {
+  for tag_data in $(get_tags); do
+    tag=${tag_data%:*}
+    date=${tag_data#*:}
 
-  if [[ -n "$commits" ]]; then
-    if use_color "$color" ; then
-      printf "%s - %s\n" "$(green Untagged)" "$(cyan Latest)"
+    if [[ -z "$last_tag" ]]; then
+      ref="$tag"
     else
-      printf "Untagged - Latest\n"
+      ref="$last_tag..$tag"
     fi
+    last_tag="$tag"
+    printf "$tag_data:$ref\n"
+  done
 
-    printf -- "----------------------------------------\n\n"
-    printf "%s\n\n\n" "$commits"
-  fi
+  printf "Untagged:Latest:$last_tag..HEAD"
 }
 
 # :src/lib/get_tags.sh
 get_tags() {
-  limit="$1"
-  result=$(git tag --sort=committerdate --format='%(refname:short):%(committerdate:short)' | grep --color=never -P "^(v[[:digit:]]|[[:digit:]])")
-  
-  if [[ -z "$limit" ]]; then
-    echo "$result"
-  else
-    limit=$(( "$limit" + 1 ))
-    echo "$result" | tail -n "$limit"
-  fi
+  git tag --sort=committerdate --format='%(refname:short):%(committerdate:short)' | grep --color=never -P "^(v[[:digit:]]|[[:digit:]])"
 }
 
 # :src/lib/is_tty.sh
@@ -204,13 +194,19 @@ is_tty() {
   [[ -t 1 || -p /dev/stdout ]]
 }
 
+# :src/lib/reverse.sh
+# Reverse an array
+# Usage: reverse "${your_array[@]}"
+reverse() {
+  arr=("$@")
+  printf '%s\n' "${arr[@]}" | tac
+}
+
 # :src/lib/use_color.sh
 use_color() {
-  option=${1:-auto}
-
-  if [[ "$option" == "yes" || "$option" == "on" || "$option" == "always" ]]; then
+  if [[ "$COLOR" == "yes" || "$COLOR" == "on" || "$COLOR" == "always" ]]; then
     return 0
-  elif [[ "$option" == "no" || "$option" == "off" || "$option" == "never" ]]; then
+  elif [[ "$COLOR" == "no" || "$COLOR" == "off" || "$COLOR" == "never" ]]; then
     return 1
   else
     is_tty
@@ -255,6 +251,12 @@ parse_requirements() {
         printf "%s\n" "--tail requires an argument: --tail, -t N"
         exit 1
       fi
+      ;;
+  
+    # :flag.case
+    --reverse | -r )
+      args[--reverse]=1
+      shift
       ;;
   
     # :flag.case

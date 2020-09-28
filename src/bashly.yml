@@ -8,6 +8,10 @@ flags:
   arg: n
   help: Show only the last N tags
 
+- long: --reverse
+  short: -r
+  help: Show tags in reverse order (newest first)
+
 - long: --out
   short: -o
   arg: path
