@@ -16,6 +16,10 @@ describe "--tail N"
 describe "--color OPTION"
   approve "git-changelog --color off"
 
+describe "--reverse"
+  approve "git-changelog --reverse"
+  approve "git-changelog --reverse --tail 2"
+
 describe "--out PATH"
   rm -f out.md
   git-changelog --out out.md

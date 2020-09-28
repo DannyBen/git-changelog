@@ -1,10 +1,11 @@
 limit="${args[--tail]}"
-color="${args[--color]:=auto}"
+color="${args[--color]}"
+reverse="${args[--reverse]}"
 out="${args[--out]}"
 
 if [[ -n "$out" ]]; then
-  get_markdown "$limit" "off" > "$out"
+  get_markdown "$limit" "off" "$reverse" > "$out"
 else
-  get_markdown "$limit" "$color"
+  get_markdown "$limit" "$color" "$reverse"
 fi
 

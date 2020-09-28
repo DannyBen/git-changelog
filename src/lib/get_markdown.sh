@@ -1,31 +1,23 @@
 get_markdown() {
   limit=$1
   color=$2
-  skip_first="$limit"
+  reverse=$3
 
   printf "Change Log\n"
   printf "========================================\n\n"
 
-  for tag_data in $(get_tags "$limit"); do
-    tag=${tag_data%:*}
-    date=${tag_data#*:}
+  refs=$(get_refs "$limit")
 
-    if [[ -z "$last_tag" ]]; then
-      from=''
-      to=$tag
-      last_tag=$tag
-    else
-      from=$last_tag
-      to=$tag
-      last_tag=$tag
-    fi
+  [[ -n "$reverse" ]] && refs=$(reverse "${refs[@]}")
+  [[ -n "$limit" ]] && refs=$(echo "$refs" | tail -n "$limit")
 
-    if [[ $skip_first ]]; then
-      skip_first=''
-      continue
-    fi
+  for tag_data in $refs; do
+    IFS=: read -ra data <<< "$tag_data" 
+    tag=${data[0]}
+    date=${data[1]}
+    ref=${data[2]}
 
-    commits=$(get_log "$from" "$to")
+    commits=$(get_log "$ref")
 
     if [[ -n "$commits" ]]; then
       if use_color "$color" ; then
@@ -38,17 +30,4 @@ get_markdown() {
       printf "%s\n\n\n" "$commits"
     fi
   done
-
-  commits=$(get_log "$last_tag" "HEAD")
-
-  if [[ -n "$commits" ]]; then
-    if use_color "$color" ; then
-      printf "%s - %s\n" "$(green Untagged)" "$(cyan Latest)"
-    else
-      printf "Untagged - Latest\n"
-    fi
-
-    printf -- "----------------------------------------\n\n"
-    printf "%s\n\n\n" "$commits"
-  fi
 }
