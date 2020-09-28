@@ -39,12 +39,19 @@ OPTIONS
 -t, --tail N
 :    Show only the last N tags.
 
+-r, --reverse
+:    Show tags in reverse order (newest first).
+
 -o, --outPATH
 :    Save output to a file.
 
 -c, --color OPTION
 :    Enable or disable color.
      Supported options: *yes*, *on*, *always*, *no*, *off*, *never*, *auto*.
+
+-s, --save
+:    Shortcut for **--reverse --out CHANGELOG.md**.
+
 
 
 SOURCE CODE
