@@ -132,6 +132,16 @@ blue_underlined() { printf "\e[4;34m%b\e[0m\n" "$*"; }
 magenta_underlined() { printf "\e[4;35m%b\e[0m\n" "$*"; }
 cyan_underlined() { printf "\e[4;36m%b\e[0m\n" "$*"; }
 
+# :src/lib/debug.sh
+debug() {
+  echo "DEBUG: $*" >&2
+}
+
+# :src/lib/get_latest_tag.sh
+get_latest_tag() {
+  git tag --sort=committerdate --format='%(refname:short)' | grep --color=never -P "^(v[[:digit:]]|[[:digit:]])" | tail -n 1
+}
+
 # :src/lib/get_log.sh
 get_log() {
   ref="$1"
@@ -193,12 +203,31 @@ get_refs() {
     printf "%s:%s\n" "$tag_data" "$ref"
   done
 
-  printf "Untagged:Latest:%s..HEAD" "$last_tag"
+  if has_latest; then
+    printf "Untagged:Latest:%s..HEAD" "$last_tag"
+  fi
+}
+
+# :src/lib/get_sha.sh
+get_sha() {
+  ref="$1"
+  result=$(git log "$ref" --reverse --format='%h:::%s' | grep --color=never -P ":::- " | tail -n 1)
+  echo "${result%:*}"
 }
 
 # :src/lib/get_tags.sh
 get_tags() {
   git tag --sort=committerdate --format='%(refname:short):%(committerdate:short)' | grep --color=never -P "^(v[[:digit:]]|[[:digit:]])"
+}
+
+# :src/lib/has_latest.sh
+# Returns success if the repository has meaningful commits after the last tag
+has_latest() {
+  latest_tag=$(get_latest_tag)
+  latest_tag_sha=$(get_sha "$latest_tag")
+  head_sha=$(get_sha HEAD) 
+
+  [[ "$latest_tag_sha" != "$head_sha" ]]
 }
 
 # :src/lib/is_tty.sh
@@ -323,7 +352,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.5"
+  version="0.1.6"
   long_usage=''
   set -e  
 

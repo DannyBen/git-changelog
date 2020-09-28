@@ -14,5 +14,7 @@ get_refs() {
     printf "%s:%s\n" "$tag_data" "$ref"
   done
 
-  printf "Untagged:Latest:%s..HEAD" "$last_tag"
+  if has_latest; then
+    printf "Untagged:Latest:%s..HEAD" "$last_tag"
+  fi
 }
