@@ -42,7 +42,7 @@ OPTIONS
 -r, --reverse
 :    Show tags in reverse order (newest first).
 
--o, --outPATH
+-o, --out PATH
 :    Save output to a file.
 
 -c, --color OPTION
