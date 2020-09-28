@@ -9,6 +9,12 @@ root_command() {
   color="${args[--color]}"
   reverse="${args[--reverse]}"
   out="${args[--out]}"
+  save="${args[--save]}"
+  
+  if [[ -n "$save" ]]; then
+    out="CHANGELOG.md"
+    reverse=1
+  fi
   
   if [[ -n "$out" ]]; then
     get_markdown "$limit" "off" "$reverse" > "$out"
@@ -68,12 +74,18 @@ git_changelog_usage() {
     printf "    Enable or disable color. Supported options:\n    - yes, on, always\n    - no, off, never\n    - auto\n"
     printf "    Default: auto\n"
     echo
+    
+    # :flag.usage
+    echo "  --save, -s"
+    printf "    Shortcut for '--reverse --out CHANGELOG.md'\n"
+    echo
 
     # :command.usage_examples
     printf "Examples:\n"
     
     printf "  git changelog --tail 3\n"
     printf "  git changelog --out CHANGELOG.md\n"
+    printf "  git changelog -r -o CHANGELOG.md\n"
     echo
 
   fi
@@ -285,6 +297,12 @@ parse_requirements() {
       fi
       ;;
   
+    # :flag.case
+    --save | -s )
+      args[--save]=1
+      shift
+      ;;
+  
   
     -* )
       printf "invalid option: %s\n" "$key"
@@ -305,7 +323,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.4"
+  version="0.1.5"
   long_usage=''
   set -e  
 

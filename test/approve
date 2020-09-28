@@ -26,5 +26,11 @@ describe "--out PATH"
   approve "cat out.md"
   rm -f out.md
 
+describe "--save"
+  rm -f CHANGELOG.md
+  git-changelog --save
+  approve "cat CHANGELOG.md"
+  rm -f CHANGELOG.md
+
 blue PASS ALL
 popd > /dev/null
