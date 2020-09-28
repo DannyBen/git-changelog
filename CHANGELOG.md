@@ -1,10 +1,11 @@
 Change Log
 ========================================
 
-Untagged - Latest
+v0.1.5 - 2020-09-28
 ----------------------------------------
 
 - Improve --tail and add --reverse
+- Add --save (shortcut for --reverse --out CHANGELOG.md)
 
 
 v0.1.4 - 2020-09-26
