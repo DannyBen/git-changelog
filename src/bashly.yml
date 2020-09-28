@@ -23,6 +23,10 @@ flags:
   default: auto
   help: "Enable or disable color. Supported options:\n- yes, on, always\n- no, off, never\n- auto"
 
+- long: --save
+  short: -s
+  help: Shortcut for '--reverse --out CHANGELOG.md'
+
 examples:
 - git changelog --tail 3
 - git changelog --out CHANGELOG.md

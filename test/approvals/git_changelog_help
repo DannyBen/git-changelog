@@ -28,6 +28,9 @@ Options:
     - auto
     Default: auto
 
+  --save, -s
+    Shortcut for '--reverse --out CHANGELOG.md'
+
 Examples:
   git changelog --tail 3
   git changelog --out CHANGELOG.md
