@@ -4,6 +4,12 @@ PATH="$PWD:$PATH"
 pushd test/sample-repo > /dev/null
 source "../approvals.bash"
 
+function cleanup {
+  git tag --delete v9.9.9 &> /dev/null
+}
+
+trap cleanup EXIT
+
 describe "--help"
   approve "git-changelog --help"
 
@@ -12,6 +18,11 @@ describe "changelog"
 
 describe "--tail N"
   approve "git-changelog --tail 2"
+
+describe "--tail N when there are no unreleased commis"
+  git tag v9.9.9 &> /dev/null
+  approve "git-changelog --tail 2" tail_with_no_loose_ends
+  git tag --delete v9.9.9 &> /dev/null
 
 describe "--color OPTION"
   approve "git-changelog --color off"
