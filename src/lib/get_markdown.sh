@@ -12,7 +12,7 @@ get_markdown() {
   [[ -n "$limit" ]] && refs=$(echo "$refs" | tail -n "$limit")
 
   for tag_data in $refs; do
-    IFS=: read -a data <<< "$tag_data" 
+    IFS=: read -ra data <<< "$tag_data" 
     tag=${data[0]}
     date=${data[1]}
     ref=${data[2]}
