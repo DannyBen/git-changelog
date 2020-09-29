@@ -12,6 +12,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install opcode
+      run: bash <(curl -Ls get.dannyb.co/opcode/setup)
+
     - name: Initialize git user
       run: |
         git config --global user.email "tester@approvals.com"
@@ -21,7 +24,7 @@ jobs:
       run: shellcheck git-changelog
 
     - name: Initialize test repo
-      run: test/init-repo
+      run: op sample-init
 
     - name: Run approval tests
-      run: test/approve
+      run: op test

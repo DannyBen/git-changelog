@@ -14,7 +14,8 @@ NAME
 SYNOPSIS
 ==================================================
 
-**git-changelog** [options | --help]
+**git changelog** [--tail N] [--reverse] [--out PATH] [--color MODE]  
+**git changelog** [--save]
 
 
 DESCRIPTION
@@ -45,9 +46,9 @@ OPTIONS
 -o, --out PATH
 :    Save output to a file.
 
--c, --color OPTION
+-c, --color MODE
 :    Enable or disable color.
-     Supported options: *yes*, *on*, *always*, *no*, *off*, *never*, *auto*.
+     Supported modes: *yes*, *on*, *always*, *no*, *off*, *never*, *auto*.
 
 -s, --save
 :    Shortcut for **--reverse --out CHANGELOG.md**.
