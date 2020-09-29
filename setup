@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-echo "=== Saving executable at /usr/local/bin/git-changelog"
+echo "=== Saving executable to /usr/local/bin/git-changelog"
 CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/git-changelog > /usr/local/bin/git-changelog"
 if [[ $EUID -ne 0 ]]; then
   sudo bash -c "$CURL_COMMAND"

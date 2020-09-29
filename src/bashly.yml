@@ -19,9 +19,9 @@ flags:
 
 - long: --color
   short: -c
-  arg: option
+  arg: mode
   default: auto
-  help: "Enable or disable color. Supported options:\n- yes, on, always\n- no, off, never\n- auto"
+  help: "Enable or disable color. Supported modes:\n- yes, on, always\n- no, off, never\n- auto"
 
 - long: --save
   short: -s

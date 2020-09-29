@@ -70,8 +70,8 @@ git_changelog_usage() {
     echo
     
     # :flag.usage
-    echo "  --color, -c OPTION"
-    printf "    Enable or disable color. Supported options:\n    - yes, on, always\n    - no, off, never\n    - auto\n"
+    echo "  --color, -c MODE"
+    printf "    Enable or disable color. Supported modes:\n    - yes, on, always\n    - no, off, never\n    - auto\n"
     printf "    Default: auto\n"
     echo
     
@@ -321,7 +321,7 @@ parse_requirements() {
         shift
         shift
       else
-        printf "%s\n" "--color requires an argument: --color, -c OPTION"
+        printf "%s\n" "--color requires an argument: --color, -c MODE"
         exit 1
       fi
       ;;

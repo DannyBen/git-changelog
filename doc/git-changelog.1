@@ -7,7 +7,12 @@
 \f[B]git\-changelog\f[] \- Change Log Generator
 .SH SYNOPSIS
 .PP
-\f[B]git\-changelog\f[] [options | \-\-help]
+\f[B]git changelog\f[] [\-\-tail N] [\-\-reverse] [\-\-out PATH]
+[\-\-color MODE]
+.PD 0
+.P
+.PD
+\f[B]git changelog\f[] [\-\-save]
 .SH DESCRIPTION
 .PP
 \f[B]git\-changelog\f[] is a bash script that generates a human readable
@@ -42,9 +47,9 @@ Save output to a file.
 .RS
 .RE
 .TP
-.B \-c, \-\-color OPTION
+.B \-c, \-\-color MODE
 Enable or disable color.
-Supported options: \f[I]yes\f[], \f[I]on\f[], \f[I]always\f[],
+Supported modes: \f[I]yes\f[], \f[I]on\f[], \f[I]always\f[],
 \f[I]no\f[], \f[I]off\f[], \f[I]never\f[], \f[I]auto\f[].
 .RS
 .RE

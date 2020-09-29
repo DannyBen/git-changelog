@@ -21,8 +21,8 @@ Options:
   --out, -o PATH
     Save output to a file
 
-  --color, -c OPTION
-    Enable or disable color. Supported options:
+  --color, -c MODE
+    Enable or disable color. Supported modes:
     - yes, on, always
     - no, off, never
     - auto
