@@ -12,6 +12,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
+    - name: Install test dependencies
+      run: sudo apt install faketime
+
     - name: Install opcode
       run: bash <(curl -Ls get.dannyb.co/opcode/setup)
 
