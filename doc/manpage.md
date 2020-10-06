@@ -1,6 +1,6 @@
-% git-changelog(1) Version 0.1.6 | Change Log Generator
+% git-changelog(1) Version 0.1.7 | Change Log Generator
 % Danny Ben Shitrit <https://github.com/dannyben>
-% September 2020
+% October 2020
 
 <!-- Reference: https://linux.die.net/man/5/pandoc_markdown -->
 
