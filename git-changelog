@@ -98,6 +98,12 @@ inspect_args() {
 }
 
 # :command.user_lib
+# :src/lib/abort.sh
+abort() {
+  red "$1"
+  exit 1
+}
+
 # :src/lib/colors.sh
 # ---
 # Color functions
@@ -256,6 +262,17 @@ use_color() {
   fi
 }
 
+# :src/lib/verify_git_repo.sh
+verify_git_repo() {
+  if ! git status &> /dev/null ; then
+    abort "Not a git repository"
+  fi
+
+  if [[ -z $(get_tags) ]]; then
+    abort "There are no usable tags in this repository"
+  fi
+}
+
 # :command.command_functions
 
 # :command.parse_requirements
@@ -352,11 +369,12 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.6"
+  version="0.1.7"
   long_usage=''
   set -e  
 
   # :src/initialize.sh
+  verify_git_repo
 }
 
 # :command.run

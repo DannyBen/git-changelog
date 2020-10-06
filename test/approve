@@ -43,5 +43,18 @@ describe "--save"
   approve "cat CHANGELOG.md"
   rm -f CHANGELOG.md
 
+describe "in a folder that is not a git repo"
+  pushd /tmp > /dev/null
+  approve "git-changelog" non_repo
+  popd > /dev/null
+
+describe "in a repo without tags"
+  mkdir -p /tmp/git-changelog-test
+  pushd /tmp/git-changelog-test > /dev/null
+  git init
+  approve "git-changelog" no_tags
+  popd > /dev/null
+  rm -rf /tmp/git-changelog-test
+
 blue PASS ALL
 popd > /dev/null
