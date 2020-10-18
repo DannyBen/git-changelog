@@ -163,8 +163,10 @@ get_markdown() {
   color=$2
   reverse=$3
 
-  printf "Change Log\n"
-  printf "========================================\n\n"
+  if [[ -z "$limit" ]]; then
+    printf "Change Log\n"
+    printf "========================================\n\n"
+  fi
 
   refs=$(get_refs "$limit")
 
@@ -369,7 +371,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.7"
+  version="0.1.8"
   long_usage=''
   set -e  
 

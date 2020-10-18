@@ -3,8 +3,10 @@ get_markdown() {
   color=$2
   reverse=$3
 
-  printf "Change Log\n"
-  printf "========================================\n\n"
+  if [[ -z "$limit" ]]; then
+    printf "Change Log\n"
+    printf "========================================\n\n"
+  fi
 
   refs=$(get_refs "$limit")
 
