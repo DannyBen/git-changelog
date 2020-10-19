@@ -1,4 +1,4 @@
-% git-changelog(1) Version 0.1.8 | Change Log Generator
+% git-changelog(1) Version 0.1.9 | Change Log Generator
 % Danny Ben Shitrit <https://github.com/dannyben>
 % October 2020
 
@@ -52,6 +52,9 @@ OPTIONS
 
 -s, --save
 :    Shortcut for **--reverse --out CHANGELOG.md**.
+
+-1
+:    Shortcut for **--tail 1**.
 
 
 
