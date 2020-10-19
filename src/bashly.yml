@@ -27,6 +27,9 @@ flags:
   short: -s
   help: Shortcut for '--reverse --out CHANGELOG.md'
 
+- long: -1
+  help: Shortcut for '--tail 1'
+
 examples:
 - git changelog --tail 3
 - git changelog --out CHANGELOG.md

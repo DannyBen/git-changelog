@@ -10,10 +10,15 @@ root_command() {
   reverse="${args[--reverse]}"
   out="${args[--out]}"
   save="${args[--save]}"
+  tail_one="${args[-1]}"
   
   if [[ -n "$save" ]]; then
     out="CHANGELOG.md"
     reverse=1
+  fi
+  
+  if [[ -n "$tail_one" ]]; then
+    limit=1
   fi
   
   if [[ -n "$out" ]]; then
@@ -78,6 +83,11 @@ git_changelog_usage() {
     # :flag.usage
     echo "  --save, -s"
     printf "    Shortcut for '--reverse --out CHANGELOG.md'\n"
+    echo
+    
+    # :flag.usage
+    echo "  -1"
+    printf "    Shortcut for '--tail 1'\n"
     echo
 
     # :command.usage_examples
@@ -348,6 +358,12 @@ parse_requirements() {
     # :flag.case
     --save | -s )
       args[--save]=1
+      shift
+      ;;
+  
+    # :flag.case
+    -1 )
+      args[-1]=1
       shift
       ;;
   
