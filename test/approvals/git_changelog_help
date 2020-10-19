@@ -31,6 +31,9 @@ Options:
   --save, -s
     Shortcut for '--reverse --out CHANGELOG.md'
 
+  -1
+    Shortcut for '--tail 1'
+
 Examples:
   git changelog --tail 3
   git changelog --out CHANGELOG.md
