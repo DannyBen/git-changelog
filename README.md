@@ -12,7 +12,7 @@ Create a markdown change log from your git repository (without GitHub).
 
 ### Installing with the setup script
 
-The simplest way to install, is to run the installation script:
+The simplest way to install, is to run the [installation script][setup]:
 
 ```shell
 $ bash <(curl -Ls get.dannyb.co/git-changelog/setup)
@@ -31,6 +31,12 @@ If you prefer to install manually:
    your path (for example `/usr/local/bin`), and make it executable.
 2. Optionally, download the [manpage](/doc/git-changelog.1) and place it in
    `/usr/local/share/man/man1`.
+
+
+## Example
+
+The [changelog][changelog] in this repository was generated with
+`git changelog`.
 
 
 ## Usage
@@ -54,4 +60,5 @@ to contribute, feel free to [open an issue][issues].
 ---
 
 [issues]: https://github.com/DannyBen/git-changelog/issues
-
+[setup]: setup
+[changelog]: CHANGELOG.md
