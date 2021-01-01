@@ -19,6 +19,9 @@ describe "changelog"
 describe "-1"
   approve "git-changelog -1"
 
+describe "-2"
+  approve "git-changelog -2"
+
 describe "--tail N"
   approve "git-changelog --tail 2"
 

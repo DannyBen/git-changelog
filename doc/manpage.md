@@ -1,4 +1,4 @@
-% git-changelog(1) Version 0.1.9 | Change Log Generator
+% git-changelog(1) Version 0.1.10 | Change Log Generator
 % Danny Ben Shitrit <https://github.com/dannyben>
 % October 2020
 
@@ -21,10 +21,10 @@ SYNOPSIS
 DESCRIPTION
 ==================================================
 
-**git-changelog** is a bash script that generates a human readable changelog
+**git-changelog** is a bash script that generates a human readable change
 log from your git repository. It requires that you create git tags for 
-the different versions of your code, and that you prefix the git commits
-messages you want to appear in the changelog with "- " (hyphen followed
+the different versions of your code, and that you prefix the git commit
+messages you want to appear in the change log with "- " (hyphen followed
 by a space).
 
 
@@ -55,6 +55,9 @@ OPTIONS
 
 -1
 :    Shortcut for **--tail 1**.
+
+-2
+:    Shortcut for **--tail 2**.
 
 
 

@@ -1,4 +1,4 @@
-git-changelog - Generate a human-readable change log from a git repo
+git-changelog - Generate a human-readable change log from a git repository
 
 Usage:
   git-changelog [options]
@@ -33,6 +33,9 @@ Options:
 
   -1
     Shortcut for '--tail 1'
+
+  -2
+    Shortcut for '--tail 2'
 
 Examples:
   git changelog --tail 3
