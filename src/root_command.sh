@@ -4,6 +4,7 @@ reverse="${args[--reverse]}"
 out="${args[--out]}"
 save="${args[--save]}"
 tail_one="${args[-1]}"
+tail_two="${args[-2]}"
 
 if [[ -n "$save" ]]; then
   out="CHANGELOG.md"
@@ -12,6 +13,10 @@ fi
 
 if [[ -n "$tail_one" ]]; then
   limit=1
+fi
+
+if [[ -n "$tail_two" ]]; then
+  limit=2
 fi
 
 if [[ -n "$out" ]]; then

@@ -11,6 +11,7 @@ root_command() {
   out="${args[--out]}"
   save="${args[--save]}"
   tail_one="${args[-1]}"
+  tail_two="${args[-2]}"
   
   if [[ -n "$save" ]]; then
     out="CHANGELOG.md"
@@ -19,6 +20,10 @@ root_command() {
   
   if [[ -n "$tail_one" ]]; then
     limit=1
+  fi
+  
+  if [[ -n "$tail_two" ]]; then
+    limit=2
   fi
   
   if [[ -n "$out" ]]; then
@@ -36,10 +41,10 @@ version_command() {
 # :command.usage
 git_changelog_usage() {
   if [[ -n $long_usage ]]; then
-    printf "git-changelog - Generate a human-readable change log from a git repo\n"
+    printf "git-changelog - Generate a human-readable change log from a git repository\n"
     echo 
   else
-    printf "git-changelog - Generate a human-readable change log from a git repo\n"
+    printf "git-changelog - Generate a human-readable change log from a git repository\n"
     echo 
   fi
 
@@ -88,6 +93,11 @@ git_changelog_usage() {
     # :flag.usage
     echo "  -1"
     printf "    Shortcut for '--tail 1'\n"
+    echo
+    
+    # :flag.usage
+    echo "  -2"
+    printf "    Shortcut for '--tail 2'\n"
     echo
 
     # :command.usage_examples
@@ -367,6 +377,12 @@ parse_requirements() {
       shift
       ;;
   
+    # :flag.case
+    -2 )
+      args[-2]=1
+      shift
+      ;;
+  
   
     -* )
       printf "invalid option: %s\n" "$key"
@@ -387,7 +403,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.9"
+  version="0.1.10"
   long_usage=''
   set -e  
 
