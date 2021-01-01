@@ -53,5 +53,5 @@ to contribute, feel free to [open an issue][issues].
 
 ---
 
-[issues]: https://github.com/DannyBen/github-changelog/issues
+[issues]: https://github.com/DannyBen/git-changelog/issues
 
