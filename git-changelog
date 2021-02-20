@@ -113,8 +113,13 @@ git_changelog_usage() {
 
 # :command.inspect_args
 inspect_args() {
-  echo args:
-  for k in "${!args[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+  readarray -t sorted_keys < <(printf '%s\n' "${!args[@]}" | sort)
+  if (( ${#args[@]} )); then
+    echo args:
+    for k in "${sorted_keys[@]}"; do echo "- \${args[$k]} = ${args[$k]}"; done
+  else
+    echo args: none
+  fi
 }
 
 # :command.user_lib
@@ -325,7 +330,7 @@ parse_requirements() {
     case "$key" in
     # :flag.case
     --tail | -t )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--tail]="$2"
         shift
         shift
@@ -343,7 +348,7 @@ parse_requirements() {
   
     # :flag.case
     --out | -o )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--out]="$2"
         shift
         shift
@@ -355,7 +360,7 @@ parse_requirements() {
   
     # :flag.case
     --color | -c )
-      if [[ $2 && $2 != -* ]]; then
+      if [[ $2 ]]; then
         args[--color]="$2"
         shift
         shift
