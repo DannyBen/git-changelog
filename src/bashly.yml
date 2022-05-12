@@ -1,6 +1,6 @@
 name: git-changelog
 help: Generate a human-readable change log from a git repository
-version: 0.1.10
+version: 0.1.11
 
 flags:
 - long: --tail
@@ -27,10 +27,10 @@ flags:
   short: -s
   help: Shortcut for '--reverse --out CHANGELOG.md'
 
-- short: -1
+- short: "-1"
   help: Shortcut for '--tail 1'
 
-- short: -2
+- short: "-2"
   help: Shortcut for '--tail 2'
 
 examples:
