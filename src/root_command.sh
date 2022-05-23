@@ -1,3 +1,5 @@
+verify_git_repo
+
 limit="${args[--tail]}"
 color="${args[--color]}"
 reverse="${args[--reverse]}"

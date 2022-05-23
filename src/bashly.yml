@@ -1,6 +1,6 @@
 name: git-changelog
 help: Generate a human-readable change log from a git repository
-version: 0.1.11
+version: 0.1.12
 
 flags:
 - long: --tail
