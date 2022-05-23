@@ -13,6 +13,11 @@ trap cleanup EXIT
 describe "--help"
   approve "git-changelog --help"
 
+describe "--help in a folder that is not a git repo"
+  pushd /tmp > /dev/null
+  approve "git-changelog --help" git_changelog_help
+  popd > /dev/null
+
 describe "changelog"
   approve "git-changelog"
 
