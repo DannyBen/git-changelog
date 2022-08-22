@@ -15,7 +15,7 @@ Create a markdown change log from your git repository (without GitHub).
 The simplest way to install, is to run the [installation script][setup]:
 
 ```shell
-$ bash <(curl -Ls get.dannyb.co/git-changelog/setup)
+$ curl -Ls get.dannyb.co/git-changelog/setup | bash
 ```
 
 It will:
