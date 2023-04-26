@@ -18,7 +18,7 @@ else
   bash -c "$CURL_COMMAND"
 fi
 
-if type git-changelog > /dev/null; then
+if type git-changelog >/dev/null; then
   echo "=== Done. Type 'git changelog --help' for more info."
 
 else

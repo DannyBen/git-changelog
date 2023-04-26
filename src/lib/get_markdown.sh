@@ -14,7 +14,7 @@ get_markdown() {
   [[ -n "$limit" ]] && refs=$(echo "$refs" | tail -n "$limit")
 
   for tag_data in $refs; do
-    IFS=: read -ra data <<< "$tag_data" 
+    IFS=: read -ra data <<<"$tag_data" 
     tag=${data[0]}
     date=${data[1]}
     ref=${data[2]}
@@ -22,7 +22,7 @@ get_markdown() {
     commits=$(get_log "$ref")
 
     if [[ -n "$commits" ]]; then
-      if use_color "$color" ; then
+      if use_color "$color"; then
         printf "%s - %s\n" "$(green "$tag")" "$(cyan "$date")"
       else
         printf "%s - %s\n" "$tag" "$date"
