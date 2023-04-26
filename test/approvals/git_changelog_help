@@ -1,17 +1,11 @@
 git-changelog - Generate a human-readable change log from a git repository
 
 Usage:
-  git-changelog [options]
+  git-changelog [OPTIONS]
   git-changelog --help | -h
   git-changelog --version | -v
 
 Options:
-  --help, -h
-    Show this help
-
-  --version, -v
-    Show version number
-
   --tail, -t N
     Show only the last N tags
 
@@ -36,6 +30,12 @@ Options:
 
   -2
     Shortcut for '--tail 2'
+
+  --help, -h
+    Show this help
+
+  --version, -v
+    Show version number
 
 Examples:
   git changelog --tail 3
