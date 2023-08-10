@@ -20,16 +20,15 @@ get_markdown() {
     ref=${data[2]}
 
     commits=$(get_log "$ref")
+    [[ -n "$commits" ]] || continue
 
-    if [[ -n "$commits" ]]; then
-      if use_color "$color"; then
-        printf "%s - %s\n" "$(green "$tag")" "$(cyan "$date")"
-      else
-        printf "%s - %s\n" "$tag" "$date"
-      fi
-
-      printf -- "----------------------------------------\n\n"
-      printf "%s\n\n\n" "$commits"
+    if use_color "$color"; then
+      printf "%s - %s\n" "$(green "$tag")" "$(cyan "$date")"
+    else
+      printf "%s - %s\n" "$tag" "$date"
     fi
+
+    printf -- "----------------------------------------\n\n"
+    printf "%s\n\n\n" "$commits"
   done
 }
