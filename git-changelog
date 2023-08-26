@@ -381,6 +381,14 @@ parse_requirements() {
     esac
   done
 
+  # :command.dependencies_filter
+  if command -v git >/dev/null 2>&1; then
+    deps['git']="$(command -v git | head -n1)"
+  else
+    printf "missing dependency: git\n" >&2
+    exit 1
+  fi
+
   # :command.command_filter
   action="root"
 
@@ -488,7 +496,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.13"
+  version="0.1.14"
   long_usage=''
   set -e
 

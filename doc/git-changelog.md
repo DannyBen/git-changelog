@@ -1,4 +1,4 @@
-% git-changelog(1) Version 0.1.13 | Generate a human-readable change log from git.
+% git-changelog(1) Version 0.1.14 | Generate a human-readable change log from git.
 % 
 % August 2023
 

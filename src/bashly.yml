@@ -1,5 +1,5 @@
 name: git-changelog
-version: 0.1.13
+version: 0.1.14
 
 help: |-
   Generate a human-readable change log from git.
