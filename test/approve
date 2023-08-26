@@ -4,12 +4,6 @@ PATH="$PWD:$PATH"
 pushd test/sample-repo > /dev/null
 source "../approvals.bash"
 
-function cleanup {
-  git tag --delete v9.9.9 &> /dev/null
-}
-
-trap cleanup EXIT
-
 describe "--help"
   approve "git-changelog --help"
 
@@ -62,10 +56,9 @@ describe "in a folder that is not a git repo"
 describe "in a repo without tags"
   mkdir -p /tmp/git-changelog-test
   pushd /tmp/git-changelog-test > /dev/null
-  git init
+  git init > /dev/null
   approve "git-changelog" no_tags
   popd > /dev/null
   rm -rf /tmp/git-changelog-test
 
-blue PASS ALL
 popd > /dev/null
