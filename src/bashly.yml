@@ -1,37 +1,51 @@
 name: git-changelog
-help: Generate a human-readable change log from a git repository
 version: 0.1.13
+
+help: |-
+  Generate a human-readable change log from git.
+  
+  This bash script lets you generate a human readable change log from your git repository.
+
+  It requires that you:
+  - Create git tags for the different versions of your code.
+  - Format the commit messages for commits you wish to include in the change log, in the same way you format a markdown bullet, by prefixing it with a hyphen and a space ("- ").
+
+dependencies: [git]
 
 flags:
 - long: --tail
   short: -t
   arg: n
-  help: Show only the last N tags
+  help: Show only the last N tags.
 
 - long: --reverse
   short: -r
-  help: Show tags in reverse order (newest first)
+  help: Show tags in reverse order (newest first).
 
 - long: --out
   short: -o
   arg: path
-  help: Save output to a file
+  help: Save output to a file.
 
 - long: --color
   short: -c
   arg: mode
   default: auto
-  help: "Enable or disable color. Supported modes:\n- yes, on, always\n- no, off, never\n- auto"
+  help: |-
+    Enable or disable color. Supported modes:
+    - `yes`, `on`, `always`
+    - `no`, `off`, `never`
+    - `auto`
 
 - long: --save
   short: -s
-  help: Shortcut for '--reverse --out CHANGELOG.md'
+  help: Shortcut for `--reverse --out CHANGELOG.md`.
 
 - short: "-1"
-  help: Shortcut for '--tail 1'
+  help: Shortcut for `--tail 1`.
 
 - short: "-2"
-  help: Shortcut for '--tail 2'
+  help: Shortcut for `--tail 2`.
 
 examples:
 - git changelog --tail 3

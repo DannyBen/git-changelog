@@ -10,7 +10,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Install test dependencies
       run: sudo apt install faketime
@@ -18,10 +18,11 @@ jobs:
     - name: Install opcode
       run: bash <(curl -Ls get.dannyb.co/opcode/setup)
 
-    - name: Initialize git user
+    - name: Configure git
       run: |
         git config --global user.email "tester@approvals.com"
         git config --global user.name "Approvals Tester"
+        git config --global init.defaultBranch master
 
     - name: Run shellcheck tests
       run: shellcheck git-changelog
@@ -31,3 +32,29 @@ jobs:
 
     - name: Run approval tests
       run: op test
+
+
+  static_analysis:
+    name: Static analysis
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Rush needed for easy installation of latest shfmt
+    - name: Install rush
+      run: curl -Ls http://get.dannyb.co/rush/setup | bash
+
+    - name: Connect rush repo
+      run: rush clone dannyben --shallow --default
+
+    - name: Install shfmt and opcode
+      run: rush get shfmt && rush get opcode
+
+    - name: Run shellcheck tests
+      run: op shellcheck
+
+    - name: Run shfmt tests
+      run: op shfmt
