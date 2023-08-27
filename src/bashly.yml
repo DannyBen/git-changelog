@@ -1,12 +1,24 @@
 name: git-changelog
 version: 0.1.14
 
+x_mandoc_authors: Danny Ben Shitrit <https://github.com/dannyben>
+
+x_mandoc_footer: |-
+  # SOURCE CODE
+
+  <https://github.com/dannyben/git-changelog>
+
+  # ISSUE TRACKER
+  
+  <https://github.com/dannyben/git-changelog/issues>
+
 help: |-
   Generate a human-readable change log from git.
   
   This bash script lets you generate a human readable change log from your git repository.
 
   It requires that you:
+
   - Create git tags for the different versions of your code.
   - Format the commit messages for commits you wish to include in the change log, in the same way you format a markdown bullet, by prefixing it with a hyphen and a space ("- ").
 
@@ -33,6 +45,7 @@ flags:
   default: auto
   help: |-
     Enable or disable color. Supported modes:
+
     - `yes`, `on`, `always`
     - `no`, `off`, `never`
     - `auto`

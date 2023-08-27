@@ -37,20 +37,19 @@ Format the commit messages for commits you wish to include in the change
 log, in the same way you format a markdown bullet, by prefixing it with
 a hyphen and a space (\[dq]- \[dq]).
 .SH OPTIONS
-.TP
-\f[B]--tail, -t N\f[R]
+.SS --tail, -t N
+.PP
 Show only the last N tags.
-.TP
-\f[B]--reverse, -r\f[R]
+.SS --reverse, -r
+.PP
 Show tags in reverse order (newest first).
-.TP
-\f[B]--out, -o PATH\f[R]
+.SS --out, -o PATH
+.PP
 Save output to a file.
-.TP
-\f[B]--color, -c MODE\f[R]
+.SS --color, -c MODE
+.PP
 Enable or disable color.
 Supported modes:
-.RS
 .IP \[bu] 2
 \f[B]yes\f[R], \f[B]on\f[R], \f[B]always\f[R]
 .IP \[bu] 2
@@ -59,19 +58,17 @@ Supported modes:
 \f[B]auto\f[R]
 .IP \[bu] 2
 Default Value: \f[B]auto\f[R]
-.RE
-.TP
-\f[B]--save, -s\f[R]
+.SS --save, -s
+.PP
 Shortcut for \f[B]--reverse --out CHANGELOG.md\f[R].
-.TP
-\f[B]-1\f[R]
+.SS -1
+.PP
 Shortcut for \f[B]--tail 1\f[R].
-.TP
-\f[B]-2\f[R]
+.SS -2
+.PP
 Shortcut for \f[B]--tail 2\f[R].
 .SH DEPENDENCIES
-.PP
-\f[B]git\f[R]
+.SS git
 .SH EXAMPLES
 .IP
 .nf
@@ -85,7 +82,9 @@ git changelog -r -o CHANGELOG.md
 .fi
 .SH SOURCE CODE
 .PP
-https://github.com/dannyben/git-changelog
+<https://github.com/dannyben/git-changelog>
 .SH ISSUE TRACKER
 .PP
-https://github.com/dannyben/git-changelog/issues
+<https://github.com/dannyben/git-changelog/issues>
+.SH AUTHORS
+Danny Ben Shitrit <https://github.com/dannyben>.
