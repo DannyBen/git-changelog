@@ -52,6 +52,13 @@ markdown change log using these rules:
    (`"- Fixed something"`)
 
 
+## Uninstalling
+
+```shell
+$ curl -Ls get.dannyb.co/git-changelog/uninstall | bash
+```
+
+
 ## Contributing / Support
 
 If you experience any issue, have a question or a suggestion, or if you wish
