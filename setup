@@ -1,27 +1,84 @@
 #!/usr/bin/env bash
 
-echo "=== Saving executable to /usr/local/bin/git-changelog"
-CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/git-changelog > /usr/local/bin/git-changelog"
-if [[ $EUID -ne 0 ]]; then
-  sudo bash -c "$CURL_COMMAND"
-  sudo chmod a+x /usr/local/bin/git-changelog
-else
-  bash -c "$CURL_COMMAND"
-  chmod a+x /usr/local/bin/git-changelog
-fi
+print_in_color() {
+  local color="$1"
+  shift
+  if [[ -z ${NO_COLOR+x} ]]; then
+    printf "$color%b\e[0m\n" "$*"
+  else
+    printf "%b\n" "$*"
+  fi
+}
 
-echo "=== Saving manpage at /usr/local/share/man/man1/git-changelog.1"
-CURL_COMMAND="curl -s https://raw.githubusercontent.com/DannyBen/git-changelog/master/doc/git-changelog.1 > /usr/local/share/man/man1/git-changelog.1"
-if [[ $EUID -ne 0 ]]; then
-  sudo bash -c "$CURL_COMMAND"
-else
-  bash -c "$CURL_COMMAND"
-fi
+red() { print_in_color "\e[31m" "$*"; }
+green() { print_in_color "\e[32m" "$*"; }
+green_bold() { print_in_color "\e[1;32m" "$*"; }
+blue() { print_in_color "\e[34m" "$*"; }
 
-if type git-changelog >/dev/null; then
-  echo "=== Done. Type 'git changelog --help' for more info."
+section() {
+  echo -e "\n=== $(green_bold "$@")"
+}
 
-else
-  echo "=== Setup failed."
-  exit 1
-fi
+copy() {
+  echo -e "$(blue "    $1") => $2"
+  # shellcheck disable=SC2086
+  cp "$origin"/$1 "$2"
+}
+
+sudo_copy() {
+  echo -e "$(blue "    $1") => $2"
+  # shellcheck disable=SC2086
+  $sudo cp "$origin"/$1 "$2"
+}
+
+command_exist() {
+  [[ -x "$(command -v "$1")" ]]
+}
+
+need() {
+  command_exist "$1" || fail "Cannot run $1"
+  echo -e "$(blue "    $1") found"
+}
+
+onerror() {
+  local exit_status=$?
+  echo -e "\n=== $(red "Aborted with exit status $exit_status")"
+  exit $exit_status
+}
+
+fail() {
+  echo -e "$(red ERR) $*"
+  return 1
+}
+
+initialize() {
+  set -e
+  trap 'onerror' ERR
+
+  # Figure out if we need sudo or not
+  sudo=''
+  if [[ $EUID -ne 0 ]]; then
+    sudo='sudo'
+  fi
+
+  repo="$1"
+  repo_url="https://github.com/${repo}.git"
+  origin=$(mktemp -d)
+}
+
+section "Initializing"
+initialize "DannyBen/git-changelog"
+
+section "Checking for pre-requisites"
+need git
+
+section "Cloning $repo"
+git clone --depth 1 "$repo_url" "$origin"
+
+section "Copying files"
+sudo_copy "git-changelog" "/usr/local/bin/"
+$sudo chmod a+x /usr/local/bin/git-changelog
+sudo_copy 'doc/git-changelog.1' "/usr/local/share/man/man1/"
+
+section "Done"
+git-changelog --version
