@@ -6,11 +6,11 @@ x_mandoc_authors: Danny Ben Shitrit <https://github.com/dannyben>
 x_mandoc_footer: |-
   # SOURCE CODE
 
-  <https://github.com/dannyben/git-changelog>
+  https://github.com/dannyben/git-changelog
 
   # ISSUE TRACKER
   
-  <https://github.com/dannyben/git-changelog/issues>
+  https://github.com/dannyben/git-changelog/issues
 
 help: |-
   Generate a human-readable change log from git.

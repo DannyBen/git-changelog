@@ -96,8 +96,8 @@ git changelog -r -o CHANGELOG.md
 
 # SOURCE CODE
 
-\<https://github.com/dannyben/git-changelog\>
+https://github.com/dannyben/git-changelog
 
 # ISSUE TRACKER
 
-\<https://github.com/dannyben/git-changelog/issues\>
+https://github.com/dannyben/git-changelog/issues
