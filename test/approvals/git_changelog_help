@@ -6,6 +6,7 @@ git-changelog
   repository.
   
   It requires that you:
+  
   - Create git tags for the different versions of your code.
   - Format the commit messages for commits you wish to include in the change
   log, in the same way you format a markdown bullet, by prefixing it with a
@@ -28,6 +29,7 @@ Options:
 
   --color, -c MODE
     Enable or disable color. Supported modes:
+    
     - `yes`, `on`, `always`
     - `no`, `off`, `never`
     - `auto`
