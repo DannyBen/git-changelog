@@ -48,6 +48,12 @@ describe "--save"
   approve "cat CHANGELOG.md"
   rm -f CHANGELOG.md
 
+describe "--save in a folder with a marked CHANGELOG"
+  cp "../fixtures/CHANGELOG.md" .
+  git-changelog --save
+  approve "cat CHANGELOG.md" "cat CHANGELOG.md (marked)"
+  rm -f CHANGELOG.md
+
 describe "in a folder that is not a git repo"
   pushd /tmp > /dev/null
   approve "git-changelog" non_repo

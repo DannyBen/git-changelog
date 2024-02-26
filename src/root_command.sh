@@ -22,7 +22,7 @@ if [[ -n "$tail_two" ]]; then
 fi
 
 if [[ -n "$out" ]]; then
-  get_markdown "$limit" "off" "$reverse" >"$out"
+  save_markdown "$limit" "$reverse" "$out"
 else
   get_markdown "$limit" "$color" "$reverse"
 fi

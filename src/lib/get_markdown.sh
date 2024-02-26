@@ -2,6 +2,7 @@ get_markdown() {
   limit=$1
   color=$2
   reverse=$3
+  break_before=$4
 
   if [[ -z "$limit" ]]; then
     printf "Change Log\n"
@@ -18,6 +19,10 @@ get_markdown() {
     tag=${data[0]}
     date=${data[1]}
     ref=${data[2]}
+
+    if [[ -n "$break_before" && "$tag" == "$break_before" ]]; then
+      break
+    fi
 
     commits=$(get_log "$ref")
     [[ -n "$commits" ]] || continue
