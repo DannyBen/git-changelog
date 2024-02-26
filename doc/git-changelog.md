@@ -94,6 +94,24 @@ git changelog -r -o CHANGELOG.md
 
 ~~~
 
+# BREAK MARKER
+
+When using **--save**, you can include manually edited content in the
+**CHANGELOG.md** file. To do so, add a marker in the following format to your
+**CHANGELOG.md** file:
+
+  \<!-- break v1.2.3 --\>
+
+This will make **git changelog --save** perform the following actions:
+
+1. Extract changelog commits until it reaches the tag **v1.2.3**. Since tags are
+   listed in reverse order, it means it will extract only newer tags.
+2. Append the content of the **CHANGELOG.md** file starting from the marker
+   onward.
+3. Save the result back to **CHANGELOG.md**.
+
+Note that this only makes sense when using **--save** or **--reverse --out FILE.md**.
+
 # SOURCE CODE
 
 https://github.com/dannyben/git-changelog

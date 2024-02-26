@@ -53,6 +53,28 @@ git changelog --out CHANGELOG.md
 
 git changelog -r -o CHANGELOG.md
 .EE
+.SH BREAK MARKER
+When using \f[B]--save\f[R], you can include manually edited content in
+the \f[B]CHANGELOG.md\f[R] file.
+To do so, add a marker in the following format to your
+\f[B]CHANGELOG.md\f[R] file:
+.PP
+<!-- break v1.2.3 -->
+.PP
+This will make \f[B]git changelog --save\f[R] perform the following
+actions:
+.IP "1." 3
+Extract changelog commits until it reaches the tag \f[B]v1.2.3\f[R].
+Since tags are listed in reverse order, it means it will extract only
+newer tags.
+.IP "2." 3
+Append the content of the \f[B]CHANGELOG.md\f[R] file starting from the
+marker onward.
+.IP "3." 3
+Save the result back to \f[B]CHANGELOG.md\f[R].
+.PP
+Note that this only makes sense when using \f[B]--save\f[R] or
+\f[B]--reverse --out FILE.md\f[R].
 .SH SOURCE CODE
 https://github.com/dannyben/git-changelog
 .SH ISSUE TRACKER
