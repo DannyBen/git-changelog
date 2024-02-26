@@ -1,4 +1,3 @@
-
 # git-changelog
 
 ![Version](https://img.shields.io/badge/version-0.1.14-blue.svg)
@@ -51,6 +50,25 @@ markdown change log using these rules:
 3. Only include log events that start with a hyphen followed by a space
    (`"- Fixed something"`)
 
+## Merging with manual content
+
+When using `--save`, you can include manually edited content in the
+`CHANGELOG.md` file. To do so, add a marker in the following format to your
+`CHANGELOG.md` file:
+
+```html
+<!-- break v1.2.3 -->
+```
+
+This will make `git changelog --save` perform the following actions:
+
+1. Extract changelog commits until it reaches the tag `v1.2.3`.
+2. Append the content of the `CHANGELOG.md` file starting from the marker
+   onward.
+3. Save the result back to `CHANGELOG.md`
+
+*Note that this only makes sense when using `--save` or
+`--reverse --out FILE.md`.*
 
 ## Uninstalling
 

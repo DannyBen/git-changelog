@@ -1,0 +1,3 @@
+[codespell]
+skip = *.1
+; ignore-words-list = bu
