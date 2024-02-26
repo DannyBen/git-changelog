@@ -62,10 +62,13 @@ When using `--save`, you can include manually edited content in the
 
 This will make `git changelog --save` perform the following actions:
 
-1. Extract changelog commits until it reaches the tag `v1.2.3`.
+1. Extract changelog commits until it reaches the tag `v1.2.3`. Since tags are
+   listed in reverse order, it means it will extract only newer tags.
 2. Append the content of the `CHANGELOG.md` file starting from the marker
    onward.
-3. Save the result back to `CHANGELOG.md`
+3. Save the result back to `CHANGELOG.md`.
+
+See [this CHANGELOG.md file](https://raw.githubusercontent.com/DannyBen/git-changelog/master/test/fixtures/CHANGELOG.md) as an example.
 
 *Note that this only makes sense when using `--save` or
 `--reverse --out FILE.md`.*
