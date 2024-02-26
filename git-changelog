@@ -549,7 +549,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  version="0.1.14"
+  version="0.2.0"
   long_usage=''
   set -e
 

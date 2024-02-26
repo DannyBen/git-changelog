@@ -1,6 +1,6 @@
-% git-changelog(1) Version 0.1.14 | Generate a human-readable change log from git.
+% git-changelog(1) Version 0.2.0 | Generate a human-readable change log from git.
 % Danny Ben Shitrit \<https://github.com/dannyben\>
-% August 2023
+% February 2024
 
 NAME
 ==================================================
