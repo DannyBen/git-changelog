@@ -1,11 +1,12 @@
 Change Log
 ========================================
 
-Untagged - Latest
+v0.2.0 - 2024-02-26
 ----------------------------------------
 
 - Generate with bashly 1.1.0
 - Update setup script
+- Add ability to merge with existing content using a break marker
 
 
 v0.1.14 - 2023-08-26
