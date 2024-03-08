@@ -4,16 +4,30 @@ PATH="$PWD:$PATH"
 pushd test/sample-repo > /dev/null
 source "../approvals.bash"
 
+describe "git-changelog"
+  context "in a folder that is a git repo"
+    approve "git-changelog"
+
+  context "in a folder that is not a git repo"
+    pushd /tmp > /dev/null
+    approve "git-changelog" non_repo
+    popd > /dev/null
+
+  context "in a repo without tags"
+    mkdir -p /tmp/git-changelog-test
+    pushd /tmp/git-changelog-test > /dev/null
+    git init > /dev/null
+    approve "git-changelog" no_tags
+    popd > /dev/null
+    rm -rf /tmp/git-changelog-test
+
 describe "--help"
   approve "git-changelog --help"
 
-describe "--help in a folder that is not a git repo"
-  pushd /tmp > /dev/null
-  approve "git-changelog --help" git_changelog_help
-  popd > /dev/null
-
-describe "changelog"
-  approve "git-changelog"
+  context "in a folder that is not a git repo"
+    pushd /tmp > /dev/null
+    approve "git-changelog --help" git_changelog_help
+    popd > /dev/null
 
 describe "-1"
   approve "git-changelog -1"
@@ -48,23 +62,10 @@ describe "--save"
   approve "cat CHANGELOG.md"
   rm -f CHANGELOG.md
 
-describe "--save in a folder with a marked CHANGELOG"
-  cp "../fixtures/CHANGELOG.md" .
-  git-changelog --save
-  approve "cat CHANGELOG.md" "cat CHANGELOG.md (marked)"
-  rm -f CHANGELOG.md
-
-describe "in a folder that is not a git repo"
-  pushd /tmp > /dev/null
-  approve "git-changelog" non_repo
-  popd > /dev/null
-
-describe "in a repo without tags"
-  mkdir -p /tmp/git-changelog-test
-  pushd /tmp/git-changelog-test > /dev/null
-  git init > /dev/null
-  approve "git-changelog" no_tags
-  popd > /dev/null
-  rm -rf /tmp/git-changelog-test
+  context "in a folder with a marked CHANGELOG"
+    cp "../fixtures/CHANGELOG.md" .
+    git-changelog --save
+    approve "cat CHANGELOG.md" "cat CHANGELOG.md (marked)"
+    rm -f CHANGELOG.md
 
 popd > /dev/null
