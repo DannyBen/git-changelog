@@ -1,11 +1,12 @@
 Change Log
 ========================================
 
-Untagged - Latest
+v0.3.0 - 2024-03-20
 ----------------------------------------
 
 - Add support for creating links for commits (`CHANGELOG_COMMIT_URL`) [`4010aa2`](https://github.com/DannyBen/git-changelog/commit/4010aa2)
-- Compare [`v0.2.0..HEAD`](https://github.com/dannyben/git-changelog/compare/v0.2.0..HEAD)
+- Add support for creating links for tag comparison (`CHANGELOG_COMPARE_URL`) [`3b6b170`](https://github.com/DannyBen/git-changelog/commit/3b6b170)
+- Compare [`v0.2.0..v0.3.0`](https://github.com/dannyben/git-changelog/compare/v0.2.0..v0.3.0)
 
 
 v0.2.0 - 2024-02-26
