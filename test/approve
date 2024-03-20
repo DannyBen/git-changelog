@@ -3,6 +3,7 @@ export APPROVALS_DIR=$PWD/test/approvals
 PATH="$PWD:$PATH"
 pushd test/sample-repo > /dev/null
 source "../approvals.bash"
+unset CHANGELOG_COMMIT_URL
 
 describe "git-changelog"
   context "in a folder that is a git repo"
@@ -20,6 +21,11 @@ describe "git-changelog"
     approve "git-changelog" no_tags
     popd > /dev/null
     rm -rf /tmp/git-changelog-test
+
+  context "when CHANGELOG_COMMIT_URL is set"
+    export CHANGELOG_COMMIT_URL="http://example.com/%h"
+    approve "git-changelog" commit_url
+    unset CHANGELOG_COMMIT_URL
 
 describe "--help"
   approve "git-changelog --help"

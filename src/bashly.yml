@@ -42,6 +42,16 @@ help: |-
 
 dependencies: [git]
 
+environment_variables:
+- name: changelog_commit_url
+  help: >
+    Set a URL template for commit links. This is passed to 'git log' as part of
+    the '--format' option, so you can use '%%h' or '%%H' to denote the commit
+    hash.
+
+
+    Example: https://github.com/DannyBen/git-changelog/commit/%%h
+
 flags:
 - long: --tail
   short: -t
