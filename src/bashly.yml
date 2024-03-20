@@ -46,20 +46,20 @@ environment_variables:
 - name: changelog_commit_url
   help: >
     Set a URL template for commit links. This is passed to 'git log' as part of
-    the '--format' option, so you can use '%%h' or '%%H' to denote the commit
+    the '--format' option, so you can use '%h' or '%H' to denote the commit
     hash.
 
 
-    Example: https://github.com/DannyBen/git-changelog/commit/%%h
+    Example: https://github.com/DannyBen/git-changelog/commit/%h
 
 - name: changelog_compare_url
   help: >
-    Set a URL template for comparing each tag with the previous tag. Use '%%s'
+    Set a URL template for comparing each tag with the previous tag. Use '%s'
     in your string to denote the ref range. When this is provided, an additional
     bullet will be added to each block of changes with a comparison link.
 
 
-    Example: https://github.com/dannyben/git-changelog/compare/%%s
+    Example: https://github.com/dannyben/git-changelog/compare/%s
 
 flags:
 - long: --tail

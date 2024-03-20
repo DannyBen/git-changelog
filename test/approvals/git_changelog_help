@@ -59,8 +59,8 @@ Environment Variables:
     Example: https://github.com/DannyBen/git-changelog/commit/%h
 
   CHANGELOG_COMPARE_URL
-    Set a URL template for comparing each tag with the previous tag. Use '%s'
-    in your string to denote the ref range. When this is provided, an additional
+    Set a URL template for comparing each tag with the previous tag. Use '%s' in
+    your string to denote the ref range. When this is provided, an additional
     bullet will be added to each block of changes with a comparison link.
     
     Example: https://github.com/dannyben/git-changelog/compare/%s
