@@ -23,7 +23,8 @@ describe "git-changelog"
     rm -rf /tmp/git-changelog-test
 
   context "when CHANGELOG_COMMIT_URL is set"
-    export CHANGELOG_COMMIT_URL="http://example.com/%h"
+    export CHANGELOG_COMMIT_URL="http://github.com/repo/commit/%h"
+    allow_diff "[a-z0-9]{7}"
     approve "git-changelog" commit_url
     unset CHANGELOG_COMMIT_URL
 
