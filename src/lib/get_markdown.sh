@@ -38,6 +38,8 @@ get_markdown() {
     if [[ -z $CHANGELOG_COMPARE_URL ]]; then
       printf "%s\n\n\n" "$commits"
     else
+      # shellcheck disable=SC2059
+      # Disabling SC2059 (quoted format string) because we use dynamic format strings
       compare_url=$(printf "$CHANGELOG_COMPARE_URL" "$ref")
       compare_link="Compare [\`$ref\`]($compare_url)"
       printf "%s\n- %s\n\n\n" "$commits" "$compare_link"
