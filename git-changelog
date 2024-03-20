@@ -126,6 +126,11 @@ git_changelog_usage() {
     printf "    Set a URL template for commit links. This is passed to 'git log' as part of\n    the '--format' option, so you can use '%%h' or '%%H' to denote the commit\n    hash.\n    \n    Example: https://github.com/DannyBen/git-changelog/commit/%%h\n"
     echo
 
+    # :environment_variable.usage
+    printf "  %s\n" "CHANGELOG_COMPARE_URL"
+    printf "    Set a URL template for comparing each tag with the previous tag. Use '%%s'\n    in your string to denote the ref range. When this is provided, an additional\n    bullet will be added to each block of changes with a comparison link.\n    \n    Example: https://github.com/dannyben/git-changelog/compare/%%s\n"
+    echo
+
     # :command.usage_examples
     printf "%s\n" "Examples:"
     printf "  git changelog --tail 3\n"
@@ -323,7 +328,16 @@ get_markdown() {
     fi
 
     printf -- "----------------------------------------\n\n"
-    printf "%s\n\n\n" "$commits"
+
+    if [[ -z $CHANGELOG_COMPARE_URL ]]; then
+      printf "%s\n\n\n" "$commits"
+    else
+      # shellcheck disable=SC2059
+      # Disabling SC2059 (quoted format string) because we use dynamic format strings
+      compare_url=$(printf "$CHANGELOG_COMPARE_URL" "$ref")
+      compare_link="Compare [\`$ref\`]($compare_url)"
+      printf "%s\n- %s\n\n\n" "$commits" "$compare_link"
+    fi
   done
 }
 
@@ -453,6 +467,7 @@ parse_requirements() {
   # :command.environment_variables_filter
 
   env_var_names+=("CHANGELOG_COMMIT_URL")
+  env_var_names+=("CHANGELOG_COMPARE_URL")
 
   # :command.dependencies_filter
   if command -v git >/dev/null 2>&1; then

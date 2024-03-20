@@ -1,0 +1,40 @@
+Change Log
+========================================
+
+[32mv0.1.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- Initial version
+- Compare [`v0.1.0`](http://github.com/repo/compare/v0.1.0)
+
+
+[32mv0.2.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- Second change log item
+- The last commit in this tag
+- Compare [`v0.1.0..v0.2.0`](http://github.com/repo/compare/v0.1.0..v0.2.0)
+
+
+[32mv0.3.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- This is the third version
+- This is a big version with multiple commits
+- Compare [`v0.2.0..v0.3.0`](http://github.com/repo/compare/v0.2.0..v0.3.0)
+
+
+[32m1.0.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- Version without the v prefix
+- Compare [`v0.3.0..1.0.0`](http://github.com/repo/compare/v0.3.0..1.0.0)
+
+
+[32mUntagged[0m - [36mLatest[0m
+----------------------------------------
+
+- Unreleased change
+- Another unreleased change
+- Last unreleased change
+- Compare [`1.0.0..HEAD`](http://github.com/repo/compare/1.0.0..HEAD)
