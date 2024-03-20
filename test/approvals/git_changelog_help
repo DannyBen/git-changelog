@@ -50,6 +50,14 @@ Options:
   --version, -v
     Show version number
 
+Environment Variables:
+  CHANGELOG_COMMIT_URL
+    Set a URL template for commit links. This is passed to 'git log' as part of
+    the '--format' option, so you can use '%h' or '%H' to denote the commit
+    hash.
+    
+    Example: https://github.com/DannyBen/git-changelog/commit/%h
+
 Examples:
   git changelog --tail 3
   git changelog --out CHANGELOG.md
