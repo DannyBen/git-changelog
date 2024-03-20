@@ -73,6 +73,31 @@ See [this CHANGELOG.md file](https://raw.githubusercontent.com/DannyBen/git-chan
 *Note that this only makes sense when using `--save` or
 `--reverse --out FILE.md`.*
 
+## Adding commit links and tag comparison links
+
+`git-changelog` can add two types of links to your change log:
+
+1. Link for each change (commit links).
+2. Link for comparing the entire tag with the previous tag (compare links).
+
+### Commit links
+
+Set the environment variable `CHANGELOG_COMMIT_URL` to a URL. `%h` will be
+replaced with the short commit hash, and `%H` with the long commit hash:
+
+```bash
+export CHANGELOG_COMMIT_URL=https://github.com/DannyBen/git-changelog/commit/%h
+```
+
+### Compare links
+
+Set the environment variable `CHANGELOG_COMPARE_URL` to a URL. `%s` will be
+replaced with the git ref range (e.g. `v1.0..v1.1`):
+
+```bash
+export CHANGELOG_COMPARE_URL=https://github.com/dannyben/git-changelog/compare/%s
+```
+
 ## Uninstalling
 
 ```shell

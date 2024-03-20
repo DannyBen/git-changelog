@@ -1,6 +1,6 @@
 % git-changelog(1) Version 0.2.0 | Generate a human-readable change log from git.
 % Danny Ben Shitrit \<https://github.com/dannyben\>
-% February 2024
+% March 2024
 
 NAME
 ==================================================
@@ -80,6 +80,27 @@ DEPENDENCIES
 
 git
 --------------------------------------------------
+
+
+ENVIRONMENT VARIABLES
+==================================================
+
+CHANGELOG_COMMIT_URL
+--------------------------------------------------
+
+Set a URL template for commit links. This is passed to 'git log' as part of the '--format' option, so you can use '%h' or '%H' to denote the commit hash.
+
+Example: https://github.com/DannyBen/git-changelog/commit/%h
+
+
+
+CHANGELOG_COMPARE_URL
+--------------------------------------------------
+
+Set a URL template for comparing each tag with the previous tag. Use '%s' in your string to denote the ref range. When this is provided, an additional bullet will be added to each block of changes with a comparison link.
+
+Example: https://github.com/dannyben/git-changelog/compare/%s
+
 
 
 EXAMPLES
