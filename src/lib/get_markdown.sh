@@ -34,6 +34,13 @@ get_markdown() {
     fi
 
     printf -- "----------------------------------------\n\n"
-    printf "%s\n\n\n" "$commits"
+
+    if [[ -z $CHANGELOG_COMPARE_URL ]]; then
+      printf "%s\n\n\n" "$commits"
+    else
+      compare_url=$(printf "$CHANGELOG_COMPARE_URL" "$ref")
+      compare_link="Compare [\`$ref\`]($compare_url)"
+      printf "%s\n- %s\n\n\n" "$commits" "$compare_link"
+    fi
   done
 }

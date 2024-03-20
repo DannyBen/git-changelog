@@ -4,6 +4,7 @@ PATH="$PWD:$PATH"
 pushd test/sample-repo > /dev/null
 source "../approvals.bash"
 unset CHANGELOG_COMMIT_URL
+unset CHANGELOG_COMPARE_URL
 
 describe "git-changelog"
   context "in a folder that is a git repo"
@@ -27,6 +28,11 @@ describe "git-changelog"
     allow_diff "[a-z0-9]{7}"
     approve "git-changelog" commit_url
     unset CHANGELOG_COMMIT_URL
+
+  context "when CHANGELOG_COMPARE_URL is set"
+    export CHANGELOG_COMPARE_URL="http://github.com/repo/compare/%s"
+    approve "git-changelog" compare_url
+    unset CHANGELOG_COMPARE_URL
 
 describe "--help"
   approve "git-changelog --help"
