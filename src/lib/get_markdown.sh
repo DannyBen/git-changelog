@@ -5,7 +5,7 @@ get_markdown() {
   break_before=$4
 
   if [[ -z "$limit" ]]; then
-    printf "Change Log\n"
+    printf "Changelog\n"
     printf "========================================\n\n"
   fi
 

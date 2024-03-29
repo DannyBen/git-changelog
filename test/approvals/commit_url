@@ -1,35 +1,35 @@
-Change Log
+Changelog
 ========================================
 
-[32mv0.1.0[0m - [*-09-28[0m
+[32mv0.1.0[0m - [36m2020-09-28[0m
 ----------------------------------------
 
-- Initial * [`*`](http://github.com/repo/commit/*)
+- Initial version [*](http://github.com/repo/commit*)
 
 
-[32mv0.2.0[0m - [*-09-28[0m
+[32mv0.2.0[0m - [36m2020-09-28[0m
 ----------------------------------------
 
-- Second change log item [`*`](http://github.com/repo/commit/*)
-- The last commit in this tag [`*`](http://github.com/repo/commit/*)
+- Second changelog item [*](http://github.com/repo/commit*)
+- The last commit in this tag [*](http://github.com/repo/commit*)
 
 
-[32mv0.3.0[0m - [*-09-28[0m
+[32mv0.3.0[0m - [36m2020-09-28[0m
 ----------------------------------------
 
-- This is the third * [`*`](http://github.com/repo/commit/*)
-- This is a big * with *e * [`*`](http://github.com/repo/commit/*)
+- This is the third version [*](http://github.com/repo/commit*)
+- This is a big version with multiple commits [*](http://github.com/repo/commit*)
 
 
-[32m1.0.0[0m - [*-09-28[0m
+[32m1.0.0[0m - [36m2020-09-28[0m
 ----------------------------------------
 
-- Version * the v prefix [`*`](http://github.com/repo/commit/*)
+- Version without the v prefix [*](http://github.com/repo/commit*)
 
 
-[32mU*[0m - [36mLatest[0m
+[32mUntagged[0m - [36mLatest[0m
 ----------------------------------------
 
-- U*ed change [`*`](http://github.com/repo/commit/*)
-- Another *sed change [`*`](http://github.com/repo/commit/*)
-- Last *sed change [`*`](http://github.com/repo/commit/*)
+- Unreleased change [*](http://github.com/repo/commit*)
+- Another unreleased change [*](http://github.com/repo/commit*)
+- Last unreleased change [*](http://github.com/repo/commit*)

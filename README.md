@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/version-0.3.0-blue.svg)
 [![Build Status](https://github.com/DannyBen/git-changelog/workflows/Test/badge.svg)](https://github.com/DannyBen/git-changelog/actions?query=workflow%3ATest)
 
-Create a markdown change log from your git repository (without GitHub).
+Create a markdown changelog from your git repository (without GitHub).
 
 ---
 
@@ -41,7 +41,7 @@ The [changelog][changelog] in this repository was generated with
 ## Usage
 
 Run `git changelog` in any compatible git repository. It will print a
-markdown change log using these rules:
+markdown changelog using these rules:
 
 1. Group `git log` events by tag
 2. Only include tags that either:

@@ -54,11 +54,11 @@ git_changelog_usage() {
     printf "git-changelog\n"
     echo
 
-    printf "  Generate a human-readable change log from git.\n  \n  This bash script lets you generate a human readable change log from your git\n  repository.\n  \n  It requires that you:\n  \n  - Create git tags for the different versions of your code.\n  - Format the commit messages for commits you wish to include in the change\n  log, in the same way you format a markdown bullet, by prefixing it with a\n  hyphen and a space (\"- \").\n"
+    printf "  Generate a human-readable changelog from git.\n  \n  This bash script lets you generate a human readable changelog from your git\n  repository.\n  \n  It requires that you:\n  \n  - Create git tags for the different versions of your code.\n  - Format the commit messages for commits you wish to include in the changelog,\n  in the same way you format a markdown bullet, by prefixing it with a hyphen\n  and a space (\"- \").\n"
     echo
 
   else
-    printf "git-changelog - Generate a human-readable change log from git.\n"
+    printf "git-changelog - Generate a human-readable changelog from git.\n"
     echo
 
   fi
@@ -298,7 +298,7 @@ get_markdown() {
   break_before=$4
 
   if [[ -z "$limit" ]]; then
-    printf "Change Log\n"
+    printf "Changelog\n"
     printf "========================================\n\n"
   fi
 

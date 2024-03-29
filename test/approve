@@ -25,7 +25,7 @@ describe "git-changelog"
 
   context "when CHANGELOG_COMMIT_URL is set"
     export CHANGELOG_COMMIT_URL="http://github.com/repo/commit/%h"
-    allow_diff "[a-z0-9]{7}"
+    allow_diff "[\`/][a-z0-9]{7}\`?"
     approve "git-changelog" commit_url
     unset CHANGELOG_COMMIT_URL
 
