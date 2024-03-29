@@ -1,5 +1,12 @@
-Change Log
+Changelog
 ========================================
+
+Untagged - Latest
+----------------------------------------
+
+- Change "Change Log" to "Changelog" [`94d21a5`](https://github.com/DannyBen/git-changelog/commit/94d21a5)
+- Compare [`v0.3.0..HEAD`](https://github.com/dannyben/git-changelog/compare/v0.3.0..HEAD)
+
 
 v0.3.0 - 2024-03-20
 ----------------------------------------
