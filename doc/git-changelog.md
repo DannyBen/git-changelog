@@ -1,11 +1,11 @@
-% git-changelog(1) Version 0.3.0 | Generate a human-readable change log from git.
+% git-changelog(1) Version 0.3.0 | Generate a human-readable changelog from git.
 % Danny Ben Shitrit \<https://github.com/dannyben\>
 % March 2024
 
 NAME
 ==================================================
 
-**git-changelog** - Generate a human-readable change log from git.
+**git-changelog** - Generate a human-readable changelog from git.
 
 SYNOPSIS
 ==================================================
@@ -15,14 +15,14 @@ SYNOPSIS
 DESCRIPTION
 ==================================================
 
-Generate a human-readable change log from git.
+Generate a human-readable changelog from git.
 
-This bash script lets you generate a human readable change log from your git repository.
+This bash script lets you generate a human readable changelog from your git repository.
 
 It requires that you:
 
 - Create git tags for the different versions of your code.
-- Format the commit messages for commits you wish to include in the change log, in the same way you format a markdown bullet, by prefixing it with a hyphen and a space ("- ").
+- Format the commit messages for commits you wish to include in the changelog, in the same way you format a markdown bullet, by prefixing it with a hyphen and a space ("- ").
 
 
 OPTIONS
