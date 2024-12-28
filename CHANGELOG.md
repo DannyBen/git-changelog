@@ -1,6 +1,13 @@
 Changelog
 ========================================
 
+v0.3.2 - 2024-12-28
+----------------------------------------
+
+- Regenerate with bashly 1.2.7 [`08a379a`](https://github.com/DannyBen/git-changelog/commit/08a379a)
+- Compare [`v0.3.1..v0.3.2`](https://github.com/dannyben/git-changelog/compare/v0.3.1..v0.3.2)
+
+
 v0.3.1 - 2024-03-29
 ----------------------------------------
 
