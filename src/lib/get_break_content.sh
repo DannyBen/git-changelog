@@ -4,7 +4,7 @@ get_break_content() {
   local filename="$1"
   local start_line
 
-  start_line=$(grep -n "<!-- break .* -->" "$filename" | cut -d':' -f1)
+  start_line=$(grep -n "<!-- break .* -->" "$filename" | head -n1 | cut -d':' -f1)
   
   if [[ -n "$start_line" ]]; then
     sed -n "${start_line},\$p" "$filename"
