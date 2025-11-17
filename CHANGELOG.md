@@ -1,6 +1,14 @@
 Changelog
 ========================================
 
+v0.3.3 - 2025-11-17
+----------------------------------------
+
+- Update setup to set 755 on the executable [`b644997`](https://github.com/DannyBen/git-changelog/commit/b644997)
+- Fix error with multiple `break` comments [`31c8bed`](https://github.com/DannyBen/git-changelog/commit/31c8bed)
+- Compare [`v0.3.2..v0.3.3`](https://github.com/dannyben/git-changelog/compare/v0.3.2..v0.3.3)
+
+
 v0.3.2 - 2024-12-28
 ----------------------------------------
 
