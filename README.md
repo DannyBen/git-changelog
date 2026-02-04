@@ -1,11 +1,8 @@
 # git-changelog
 
-![Version](https://img.shields.io/badge/version-0.3.3-blue.svg)
-[![Build Status](https://github.com/DannyBen/git-changelog/workflows/Test/badge.svg)](https://github.com/DannyBen/git-changelog/actions?query=workflow%3ATest)
+![repocard](repocard.svg)
 
 Create a markdown changelog from your git repository (without GitHub).
-
----
 
 ## Install
 
