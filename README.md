@@ -1,6 +1,6 @@
 # git-changelog
 
-![repocard](repocard.svg)
+![repocard](https://repocard.dannyben.com/svg/git-changelog.svg)
 
 Create a markdown changelog from your git repository (without GitHub).
 
