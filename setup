@@ -1,97 +1,12 @@
 #!/usr/bin/env bash
+set -euo pipefail
+tmpdir="$(mktemp -d)"
+trap 'rm -rf "$tmpdir"' EXIT
+cd "$tmpdir"
+wget -q https://github.com/DannyBen/ssi/releases/latest/download/ssi
+chmod +x ssi
 
-print_in_color() {
-  local color="$1"
-  shift
-  if [[ -z ${NO_COLOR+x} ]]; then
-    printf "$color%b\e[0m\n" "$*"
-  else
-    printf "%b\n" "$*"
-  fi
-}
-
-red() { print_in_color "\e[31m" "$*"; }
-green() { print_in_color "\e[32m" "$*"; }
-green_bold() { print_in_color "\e[1;32m" "$*"; }
-blue() { print_in_color "\e[34m" "$*"; }
-
-section() {
-  printf "\n=== %s\n" "$(green_bold "$@")"
-}
-
-sudo_copy() {
-  printf "%s => %s\n" "$(blue "$(printf '%-25s' "$1")")" "$2"
-
-  if [[ -n "$3" ]]; then
-    $sudo install -m "$3" "$1" "$2"
-  else
-    $sudo install "$1" "$2"
-  fi
-}
-
-copy_executable() {
-  sudo_copy "$1" "/usr/local/bin/" "755"
-}
-
-copy_man() {
-  if [[ ! -d "/usr/local/share/man/man1/" ]]; then return; fi
-
-  for file in "$1"/*.1; do
-    sudo_copy "$file" "/usr/local/share/man/man1/"
-  done
-
-  if command_exist makewhatis; then
-    $sudo makewhatis /usr/local/man
-  fi
-}
-
-command_exist() {
-  [[ -x "$(command -v "$1")" ]]
-}
-
-need() {
-  command_exist "$1" || fail "Cannot run $1"
-  printf "%s found\n" "$(blue "    $1")"
-}
-
-onerror() {
-  local exit_status=$?
-  printf "\n=== %s\n" "$(red "Aborted with exit status $exit_status")"
-  exit $exit_status
-}
-
-fail() {
-  printf "$(red 'ERR') %s\n" "$*"
-  return 1
-}
-
-initialize() {
-  set -e
-  trap 'onerror' ERR
-
-  # Figure out if we need sudo or not
-  sudo=''
-  if [[ $EUID -ne 0 ]]; then
-    sudo='sudo'
-  fi
-
-  repo="$1"
-  repo_url="https://github.com/${repo}.git"
-  pushd "$(mktemp -d)" >/dev/null
-}
-
-section "Initializing"
-initialize "DannyBen/git-changelog"
-
-section "Checking for pre-requisites"
-need git
-
-section "Cloning $repo"
-git clone --depth 1 "$repo_url" .
-
-section "Copying files"
-copy_executable 'git-changelog'
-copy_man 'doc'
-
-section "Done"
-git-changelog --version
+./ssi log info Installing git-changelog
+./ssi bin https://github.com/DannyBen/git-changelog/releases/latest/download/git-changelog
+./ssi man https://raw.githubusercontent.com/DannyBen/git-changelog/refs/heads/master/doc/git-changelog.1
+./ssi log info "git changelog --version : $(git changelog --version)"
