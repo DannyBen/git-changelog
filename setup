@@ -7,6 +7,6 @@ wget -q https://github.com/DannyBen/ssi/releases/latest/download/ssi
 chmod +x ssi
 
 ./ssi log info Installing git-changelog
-./ssi bin https://github.com/DannyBen/git-changelog/releases/latest/download/git-changelog
-./ssi man https://raw.githubusercontent.com/DannyBen/git-changelog/refs/heads/master/doc/git-changelog.1
+./ssi install bin https://github.com/DannyBen/git-changelog/releases/latest/download/git-changelog
+./ssi install man https://raw.githubusercontent.com/DannyBen/git-changelog/refs/heads/master/doc/git-changelog.1
 ./ssi log info "git changelog --version : $(git changelog --version)"
