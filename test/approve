@@ -34,6 +34,11 @@ describe "git-changelog"
     approve "git-changelog" compare_url
     unset CHANGELOG_COMPARE_URL
 
+  context "when CHANGELOG_REGEX is set to match all entries"
+    export CHANGELOG_REGEX="."
+    approve "git-changelog" regex_all_entries
+    unset CHANGELOG_REGEX
+
 describe "--help"
   approve "git-changelog --help"
 

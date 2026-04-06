@@ -65,6 +65,12 @@ Environment Variables:
     
     Example: https://github.com/dannyben/git-changelog/compare/%s
 
+  CHANGELOG_REGEX
+    Set a PCRE (Perl-compatible) regex to match against git log entries. This is
+    evaluated using `grep -P`.
+    Example: '^\S+\s+\S+'   # match subjects with at least two words
+    Default: ^- 
+
 Examples:
   git changelog --tail 3
   git changelog --out CHANGELOG.md

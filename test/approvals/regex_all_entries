@@ -1,0 +1,37 @@
+Changelog
+========================================
+
+[32mv0.1.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- Initial version
+
+
+[32mv0.2.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- commit message that will not show
+- Second changelog item
+- The last commit in this tag
+
+
+[32mv0.3.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- another commit message that will not show
+- This is the third version
+- This is a big version with multiple commits
+
+
+[32m1.0.0[0m - [36m2020-09-28[0m
+----------------------------------------
+
+- Version without the v prefix
+
+
+[32mUntagged[0m - [36mLatest[0m
+----------------------------------------
+
+- Unreleased change
+- Another unreleased change
+- Last unreleased change

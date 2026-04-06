@@ -1,6 +1,6 @@
 % git-changelog(1) Version 0.3.3 | Generate a human-readable changelog from git.
 % Danny Ben Shitrit \<https://github.com/dannyben\>
-% November 2025
+% April 2026
 
 NAME
 ==================================================
@@ -102,6 +102,15 @@ Set a URL template for comparing each tag with the previous tag. Use '%s' in you
 Example: https://github.com/dannyben/git-changelog/compare/%s
 
 
+
+CHANGELOG_REGEX
+--------------------------------------------------
+
+Set a PCRE (Perl-compatible) regex to match against git log entries. This is evaluated using **grep -P**.
+Example: '^\S+\s+\S+'   # match subjects with at least two words
+
+
+- Default Value: **^- **
 
 EXAMPLES
 ==================================================
