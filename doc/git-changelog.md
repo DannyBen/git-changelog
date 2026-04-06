@@ -1,4 +1,4 @@
-% git-changelog(1) Version 0.3.3 | Generate a human-readable changelog from git.
+% git-changelog(1) Version 0.3.4 | Generate a human-readable changelog from git.
 % Danny Ben Shitrit \<https://github.com/dannyben\>
 % April 2026
 

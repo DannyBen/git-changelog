@@ -593,7 +593,7 @@ parse_requirements() {
 
 # :command.initialize
 initialize() {
-  declare -g version="0.3.3"
+  declare -g version="0.3.4"
   set -e
 
   # :command.environment_variables_default
