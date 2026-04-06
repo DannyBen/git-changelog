@@ -1,12 +1,12 @@
 Changelog
 ========================================
 
-Untagged - Latest
+v0.3.4 - 2026-04-06
 ----------------------------------------
 
 - Update setup/uninstall [`aa6d0ce`](https://github.com/DannyBen/git-changelog/commit/aa6d0ce)
 - Add support for custom log regex [`19f0c16`](https://github.com/DannyBen/git-changelog/commit/19f0c16)
-- Compare [`v0.3.3..HEAD`](https://github.com/dannyben/git-changelog/compare/v0.3.3..HEAD)
+- Compare [`v0.3.3..v0.3.4`](https://github.com/dannyben/git-changelog/compare/v0.3.3..v0.3.4)
 
 
 v0.3.3 - 2025-11-17
