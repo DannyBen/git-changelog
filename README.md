@@ -47,6 +47,20 @@ markdown changelog using these rules:
 3. Only include log events that start with a hyphen followed by a space
    (`"- Fixed something"`)
 
+### Customizing the log entry filter
+
+Set the environment variable `CHANGELOG_REGEX` to a PCRE (Perl-compatible)
+regular expression to customize which git log entries are included. The
+default is `^- `.
+
+For example, to include subjects with at least two words:
+
+```bash
+export CHANGELOG_REGEX='^\S+\s+\S+'
+```
+
+The expression is evaluated using `grep -P`.
+
 ## Merging with manual content
 
 When using `--save`, you can include manually edited content in the
